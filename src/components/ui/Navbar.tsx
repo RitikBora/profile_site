@@ -24,35 +24,35 @@ export default function Navbar() {
       label: "Dashboard",
       href: "/",
       icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
     {
       label: "About",
       href: "about",
       icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
     {
       label: "Projects",
       href: "projects",
       icon: (
-        <IconCode className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconCode className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
     {
       label: "Career",
       href: "career",
       icon: (
-        <IconBriefcase className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconBriefcase className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
     {
       label: "Testimonials",
       href: "testimonials",
       icon: (
-        <IconMessage2Star className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconMessage2Star className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
   ];
@@ -62,14 +62,14 @@ export default function Navbar() {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/ritikbora",
       icon: (
-        <IconBrandLinkedin className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconBrandLinkedin className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
     {
       label: "Github",
       href: "https://github.com/RitikBora",
       icon: (
-        <IconBrandGithub className="text-neutral-700 dark:text-neutral-200 h-8 w-8 flex-shrink-0" />
+        <IconBrandGithub className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
       ),
     },
   ];
