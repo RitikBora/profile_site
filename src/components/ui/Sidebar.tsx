@@ -1,9 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, SetStateAction, Dispatch } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { SelectedPage } from "./Navbar";
 
 interface Links {
   label: string;
@@ -159,11 +160,15 @@ export const SidebarLink = ({
   link,
   className,
   type,
+  selectedPage,
+  setSelectedPage,
   ...props
 }: {
   link: Links;
   className?: string;
   type?: string,
+  selectedPage?: SelectedPage,
+  setSelectedPage?: Dispatch<SetStateAction<SelectedPage>>,
   props?: LinkProps;
 }) => {
   const { open, animate } = useSidebar();
@@ -203,6 +208,7 @@ export const SidebarLink = ({
         className
       )}
       {...props}
+      onClick={() => {setSelectedPage && setSelectedPage(link.label as SelectedPage)}}
     >
       {link.icon}
 
@@ -211,7 +217,7 @@ export const SidebarLink = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-m dark:group-hover:text-blue-400 group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className={`text-neutral-700 dark:text-neutral-200 text-m dark:group-hover:text-blue-400 group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0 ${selectedPage === link.label && "dark:text-blue-400"}`}
       >
         {link.label}
       </motion.span>

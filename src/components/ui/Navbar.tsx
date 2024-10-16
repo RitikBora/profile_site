@@ -13,46 +13,46 @@ import {
 import Image from "next/image";
 
 
-
+export type SelectedPage = "Dashboard" | "About" | "Projects" | "Career" | "Testimonials";
 
 export default function Navbar() {
 
- 
+  const [selectedPage , setSeletedPage] = useState<SelectedPage>("Dashboard"); 
    
   const links = [
     {
       label: "Dashboard",
       href: "/",
       icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconBrandTabler className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Dashboard" && "dark:text-blue-400"}`} />
       ),
     },
     {
       label: "About",
       href: "about",
       icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconUserBolt className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "About" && "dark:text-blue-400"}`} />
       ),
     },
     {
       label: "Projects",
       href: "projects",
       icon: (
-        <IconCode className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconCode className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Projects" && "dark:text-blue-400"}`} />
       ),
     },
     {
       label: "Career",
       href: "career",
       icon: (
-        <IconBriefcase className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconBriefcase className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Career" && "dark:text-blue-400"}`} />
       ),
     },
     {
       label: "Testimonials",
       href: "testimonials",
       icon: (
-        <IconMessage2Star className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconMessage2Star className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Testimonials" && "dark:text-blue-400"}`} />
       ),
     },
   ];
@@ -62,14 +62,14 @@ export default function Navbar() {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/ritikbora",
       icon: (
-        <IconBrandLinkedin className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconBrandLinkedin className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0`} />
       ),
     },
     {
       label: "Github",
       href: "https://github.com/RitikBora",
       icon: (
-        <IconBrandGithub className="text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0" />
+        <IconBrandGithub className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0`} />
       ),
     },
   ];
@@ -99,7 +99,7 @@ export default function Navbar() {
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden gap-24">
             <div className="flex flex-col gap-3">
               {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
+                <SidebarLink key={idx} link={link} selectedPage={selectedPage} setSelectedPage={setSeletedPage}/>
               ))}
             </div>
 
