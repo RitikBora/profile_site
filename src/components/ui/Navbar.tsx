@@ -24,35 +24,35 @@ export default function Navbar() {
       label: "Dashboard",
       href: "/",
       icon: (
-        <IconBrandTabler className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Dashboard" && "dark:text-blue-400"}`} />
+        <IconBrandTabler className={`text-neutral-700  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Dashboard" ? "dark:text-blue-400" : "dark:text-neutral-200"}`} />
       ),
     },
     {
       label: "About",
       href: "about",
       icon: (
-        <IconUserBolt className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "About" && "dark:text-blue-400"}`} />
+        <IconUserBolt className={`text-neutral-700  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "About" ? "dark:text-blue-400" : "dark:text-neutral-200"}`} />
       ),
     },
     {
       label: "Projects",
       href: "projects",
       icon: (
-        <IconCode className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Projects" && "dark:text-blue-400"}`} />
+        <IconCode className={`text-neutral-700  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Projects" ? "dark:text-blue-400" : "dark:text-neutral-200"}`} />
       ),
     },
     {
       label: "Career",
       href: "career",
       icon: (
-        <IconBriefcase className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Career" && "dark:text-blue-400"}`} />
+        <IconBriefcase className={`text-neutral-700  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Career" ? "dark:text-blue-400" : "dark:text-neutral-200"}`} />
       ),
     },
     {
       label: "Testimonials",
       href: "testimonials",
       icon: (
-        <IconMessage2Star className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Testimonials" && "dark:text-blue-400"}`} />
+        <IconMessage2Star className={`text-neutral-700  dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0 ${selectedPage === "Testimonials" ? "dark:text-blue-400" : "dark:text-neutral-200"}`} />
       ),
     },
   ];
