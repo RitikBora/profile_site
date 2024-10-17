@@ -1,6 +1,4 @@
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { RoundedInfo } from "@/components/ui/RoundedInfo";
-import { div } from "framer-motion/client";
 
 export default function Home() {
   return (

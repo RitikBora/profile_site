@@ -90,11 +90,11 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] flex-shrink-0",
+          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[250px] flex-shrink-0",
           className
         )}
         animate={{
-          width: animate ? (open ? "300px" : "80px") : "300px",
+          width: animate ? (open ? "250px" : "80px") : "250px",
         }}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
@@ -174,9 +174,20 @@ export const SidebarLink = ({
   const { open, animate } = useSidebar();
 
 
+  const variants = {
+    hidden: { x: -100, opacity: 0 },  
+    visible: { x: 0, opacity: 1 },    
+  };
+
 
   return type === "external" ? (
-
+     <motion.div
+      className="flex flex-1"
+      initial="hidden"        
+      animate="visible"       
+      variants={variants}     
+      transition={{ duration: 0.5 }} 
+    >
     <a
       href={link.href}
       target="_blank"
@@ -199,8 +210,16 @@ export const SidebarLink = ({
         {link.label}
       </motion.span>
     </a>
+    </motion.div>
+    
   ) : (
-  
+   <motion.div
+      className="flex flex-1"
+      initial="hidden"        
+      animate="visible"       
+      variants={variants}     
+      transition={{ duration: 0.5 }} 
+    >
     <Link
       href={link.href}
       className={cn(
@@ -222,5 +241,6 @@ export const SidebarLink = ({
         {link.label}
       </motion.span>
     </Link>
+    </motion.div>
   );
 };

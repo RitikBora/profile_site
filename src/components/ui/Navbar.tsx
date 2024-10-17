@@ -76,7 +76,7 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
   return (
-      <Sidebar open={open} setOpen={setOpen} animate={true}>
+      <Sidebar open={open} setOpen={setOpen} animate={false}>
         <SidebarBody className="justify-between gap-12">
           <div className="pt-5">
             <SidebarLink
