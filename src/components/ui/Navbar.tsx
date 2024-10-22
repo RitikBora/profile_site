@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "./Sidebar";
 import {
   IconBrandTabler,
@@ -17,7 +17,7 @@ export type SelectedPage = "Dashboard" | "About" | "Projects" | "Career" | "Test
 
 export default function Navbar() {
 
-  const [selectedPage , setSeletedPage] = useState<SelectedPage>("Dashboard"); 
+  const [selectedPage , setSelectedPage] = useState<SelectedPage>("Dashboard"); 
    
   const links = [
     {
@@ -75,6 +75,21 @@ export default function Navbar() {
   ];
 
   const [open, setOpen] = useState(false);
+
+  useEffect(() =>
+  {
+    let page = window.location.pathname.split("/")[1];
+    if(page)
+    {
+      page =  page[0].toUpperCase() + page.slice(1);
+      setSelectedPage(page as SelectedPage)
+    }else
+    {
+      setSelectedPage('Dashboard');
+    }
+    
+    console.log(page);
+  } , [])
   return (
       <Sidebar open={open} setOpen={setOpen} animate={false}>
         <SidebarBody className="justify-between gap-12">
@@ -99,7 +114,7 @@ export default function Navbar() {
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden gap-24">
             <div className="flex flex-col gap-3">
               {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} selectedPage={selectedPage} setSelectedPage={setSeletedPage}/>
+                <SidebarLink key={idx} link={link} selectedPage={selectedPage} setSelectedPage={setSelectedPage}/>
               ))}
             </div>
 
