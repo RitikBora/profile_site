@@ -14,18 +14,10 @@ export const ProjectCard = ({
   imageUrl: string;
 }) => {
 
-  const variants = {
-    hidden: { x: -100, opacity: 0 },  
-    visible: { x: 0, opacity: 1 },    
-  };
 
   return (
-    <motion.div
-      className="flex flex-1"
-      initial="hidden"        
-      animate="visible"       
-      variants={variants}     
-      transition={{ duration: 0.5 }} 
+    <div
+      className="flex flex-1"    
     >
       <img
         src={imageUrl}
@@ -43,6 +35,6 @@ export const ProjectCard = ({
           <RoundedInfo innerText="WebRTC" />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

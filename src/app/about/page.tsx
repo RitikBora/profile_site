@@ -1,6 +1,8 @@
 "use client"
 import { LitUpButton } from "@/components/ui/LitUpButton";
 import { motion} from "framer-motion";
+import { div } from "framer-motion/client";
+import Typewriter from 'typewriter-effect';
 
 
 export default function About () {
@@ -13,8 +15,11 @@ export default function About () {
             <div className="text-4xl">
               💬
              <div className="text-gray-400 font-bold">About Me</div>
+             <TypeWriter/>
             </div>
-              <AboutSection/>
+            
+
+            <AboutSection/>
           </div>
       </div>
     </div>
@@ -29,7 +34,7 @@ const AboutSection = () =>
     visible: { y: 0, opacity: 1 },  
   }
   return(
-    <div className="flex flex-1 gap-16" >
+    <div className="pt-10 flex flex-1 gap-16" >
        <motion.div
               className="w-full h-auto flex flex-col gap-12 "
               initial="hidden"        
@@ -39,8 +44,8 @@ const AboutSection = () =>
             >
               <img src="/images/about.png" alt="me" height="300px" width="300px" className="flex-initial rounded-lg rotate-3 border-4 border-black"/>
               <div className="flex gap-10 pl-3">
-                <LitUpButton text="view resume"/>
-                <LitUpButton text="hire me"/>
+                <LitUpButton text="view resume" href="https://drive.google.com/file/d/10ichiHcIg3i3ybQr4GhCHIjeieKYSfMz/view"/>
+                <LitUpButton text="hire me" href="mailto:ritikbora2000@gmail.com"/>
               </div>      
             </motion.div>
        <div className="text-lg pt-2 flex flex-col gap-5">
@@ -65,4 +70,21 @@ const AboutSection = () =>
   )
 }
 
+
+const TypeWriter = () =>
+{
+ 
+const quotes : string[]= [  "Play like a champion, or don’t play at all" , "No balls No Babies" , "Champions keep playing until they get it right"  ]
+return(
+  <div className="pt-2 text-lg text-gray-400">
+    <Typewriter
+    options={{
+      strings: quotes,
+      autoStart: true,
+      loop: true,
+    }}
+    />
+  </div>
+)
+}
 
