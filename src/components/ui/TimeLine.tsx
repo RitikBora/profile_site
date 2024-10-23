@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import {motion} from 'framer-motion'
 import { IconBriefcase, IconCalendar, IconSchool } from '@tabler/icons-react'
 
 interface TimelineEntry {
@@ -12,36 +13,47 @@ interface TimelineEntry {
 const timelineData: TimelineEntry[] = [
   {
     title: 'Senior Software Engineer',
-    company: 'Tech Innovators Inc.',
-    date: '2021 - Present',
+    company: 'miniOrange',
+    date: 'Oct 2024 - Present',
     description: 'Leading development of cutting-edge web applications using React and Node.js.',
     type: 'work',
   },
   {
-    title: 'Master\'s in Computer Science',
-    company: 'Tech University',
-    date: '2019 - 2021',
+    title: 'Software Engineer',
+    company: 'miniOrange',
+    date: '2021 - 2024',
     description: 'Specialized in Artificial Intelligence and Machine Learning.',
-    type: 'education',
+    type: 'work',
   },
   {
-    title: 'Software Developer',
-    company: 'StartUp Solutions',
-    date: '2017 - 2021',
+    title: 'Software Developer Intern',
+    company: 'Copper Cloud',
+    date: '2020 - 2021',
     description: 'Developed and maintained multiple client-facing applications.',
     type: 'work',
   },
   {
-    title: 'Bachelor\'s in Software Engineering',
-    company: 'State University',
-    date: '2013 - 2017',
+    title: 'Bachelor\'s in E&TC',
+    company: 'Army Institute of Technology, Pune',
+    date: '2017 - 2021',
     description: 'Graduated with honors. Focused on web technologies and software architecture.',
     type: 'education',
   },
 ]
 
 export default function CareerTimeline() {
+   const variants = {
+    hidden: { y: -20, opacity: 0 },  
+    visible: { y: 0, opacity: 1 },  
+  }
+
   return (
+    <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            transition={{duration: 0.2}}
+          >
     <div className="container mx-auto px-4 py-8">
       <div className="relative wrap overflow-hidden p-4 md:p-10">
         <div className="border-2-2 absolute border-opacity-20 border-gray-700 dark:border-gray-300 h-full border left-1/2 hidden md:block"></div>
@@ -67,5 +79,6 @@ export default function CareerTimeline() {
         ))}
       </div>
     </div>
+    </motion.div>
   )
 }
