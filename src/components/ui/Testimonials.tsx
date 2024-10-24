@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react"
 
 interface Testimonial {
@@ -136,6 +135,6 @@ const TestomonialCard = ({currentIndex} : {currentIndex : number}) =>
                 </div>
                 <p className="text-gray-300 italic">"{testimonials[currentIndex].content}"</p>
               </CardContent>
-            </Card>
+          </Card>
     )
 }

@@ -69,7 +69,7 @@ export default function CareerTimeline() {
             </div>
             <div className="order-1 bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4">
               <h3 className="mb-3 font-bold text-gray-800 dark:text-gray-100 text-xl">{entry.title}</h3>
-              <h4 className="mb-3 font-semibold text-primary dark:text-primary-foreground text-md">{entry.company}</h4>
+              <h4 className="mb-3 font-semibold text-primary dark:text-white text-md">{entry.company}</h4>
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 flex items-center">
                 <IconCalendar size={14} className="mr-2" /> {entry.date}
               </p>

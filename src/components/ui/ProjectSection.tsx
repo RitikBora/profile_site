@@ -9,8 +9,8 @@ export const ProjectSection = () =>
     visible: {
       opacity: 1, 
       transition: {
-        staggerChildren: 0.3, 
-        delayChildren: 0.2, 
+        staggerChildren: 0.1, 
+        delayChildren: 0.1, 
       },
     },
   };
@@ -20,7 +20,7 @@ export const ProjectSection = () =>
     visible: { 
       x: 0, 
       opacity: 1, 
-      transition: { duration: 0.5 }, 
+      transition: { duration: 0.3 }, 
     },
   };
 
