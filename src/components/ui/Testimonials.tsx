@@ -19,25 +19,22 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Alice Johnson",
-    role: "CEO, TechCorp",
-    content: "This product has revolutionized our workflow. Highly recommended!",
+    name: "Kuldeep Patil",
+    role: "Engineering Lead, miniOrange",
+    content: `Ritik’s technical prowess as a software developer and engineer is truly exceptional. His ability to dissect complex problems and devise innovative solutions is unparalleled. His contributions were instrumental in the successful deployment of several critical apps, including the development of robust cloud applications for monday.com. His leadership skills were equally impressive. He not only led by example but also mentored junior team members, fostering a collaborative and productive team environment.
+
+What sets Ritik apart is his extraordinary personality. He is approachable, kind, and always willing to lend a hand. His positive attitude and strong work ethic are infectious, creating a work atmosphere that is both motivating and enjoyable. Ritik's dedication to helping others and his commitment to excellence make him a true asset to any team. Working with Ritik was an enriching experience. He is not just a talented professional but also a great person to work with.
+
+`,
     avatar: "/placeholder.svg?height=40&width=40"
   },
   {
     id: 2,
-    name: "Bob Smith",
-    role: "Designer, CreativeCo",
+    name: "Aditya Reddy",
+    role: "Team Lead(Atlassian) , miniOrange",
     content: "Intuitive and powerful. It's been a game-changer for our team.",
     avatar: "/placeholder.svg?height=40&width=40"
   },
-  {
-    id: 3,
-    name: "Carol Williams",
-    role: "Marketing Manager, BrandInc",
-    content: "The support team is fantastic. They've been incredibly helpful throughout our onboarding.",
-    avatar: "/placeholder.svg?height=40&width=40"
-  }
 ]
 
 export default function TestimonialCarousel() {
@@ -77,8 +74,13 @@ export default function TestimonialCarousel() {
   }
 
   return (
-    <div className="w-3/4 ">
-      <div {...handlers} className="relative overflow-hidden ">
+    <div className=' w-full flex flex-col'>
+      <div {...handlers} className="relative overflow-hidden w-full  flex gap-6">
+           <div className="flex items-center">
+                <button  onClick={prevTestimonial} className="h-12 w-12 rounded-full flex justify-center items-center text-gray-400 hover:text-gray-100 hover:bg-gray-700" aria-label="Previous testimonial">
+                    <IconChevronLeft className="h-8 w-8" />
+                </button>
+            </div>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -87,20 +89,17 @@ export default function TestimonialCarousel() {
             animate="center"
             exit="exit"
             transition={{ type: "tween", duration: 0.5 }}
-            className='flex gap-6'
+            className='flex-1'
           >
-            <div className="flex items-center">
-                <button  onClick={prevTestimonial} className="h-12 w-12 rounded-full flex justify-center items-center text-gray-400 hover:text-gray-100 hover:bg-gray-700" aria-label="Previous testimonial">
-                    <IconChevronLeft className="h-8 w-8" />
-                </button>
-            </div>
-            <TestomonialCard currentIndex={currentIndex}/>
-            <div className="flex items-center">
+           
+          <TestomonialCard currentIndex={currentIndex}/>
+            
+          </motion.div>
+          <div className="flex items-center">
                 <button  onClick={nextTestimonial} className="h-12 w-12 rounded-full flex justify-center items-center text-gray-400 hover:text-gray-100 hover:bg-gray-700" aria-label="Next testimonial">
                     <IconChevronRight className="h-8 w-8" />
                 </button>
-                </div>
-          </motion.div>
+            </div>
         
         
       </div>
@@ -123,7 +122,7 @@ export default function TestimonialCarousel() {
 const TestomonialCard = ({currentIndex} : {currentIndex : number}) =>
 {
     return(
-        <Card className="bg-neutral-800 shadow-lg border-gray-700 min-h-[250px]">
+        <Card className="bg-neutral-800 shadow-lg border-gray-700 min-h-[350px] w-full">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <Avatar className="h-10 w-10 mr-4">

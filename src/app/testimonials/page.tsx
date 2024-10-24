@@ -9,7 +9,7 @@ export default function About () {
               💬
               <div className="text-gray-400 font-bold">Testimonials</div>
             </div>
-            <div className="w-full  flex justify-center items-center">
+            <div className="">
               <TestimonialCarousel/>
             </div>
         </div> 
