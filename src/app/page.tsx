@@ -27,19 +27,12 @@ const HeroSection = () =>
             <div className="text-gray-400 font-bold">Hello there! I'm Ritik</div>
           </div>
           <br />
-          <div className="text-lg leading-snug">
+          <div className="text-lg text-gray-400 leading-snug">
              <div>
-                I'm a full-stack developer that loves building products and web apps that can impact millions of lives
-              </div>
+                I’m a full-stack developer with over 3 years of experience building scalable web applications. Currently, I work as a Senior Software Developer at <span className="cursor-pointer">miniOrange</span>, a leading product-based company in the cybersecurity domain. </div>
               <br />
-              <div>
-              I have been building scalable web apps that are performance-optimized and stunningly designed <br /> for more than 2 years now.
-              </div>
-              <br />
-               <div>
-                I am working as a Software Developer Fellow at 0x.day from July 2024,<br />
-                  and as a Software Engineer Intern at Devkit from August 2024.
-              </div>
+             
+               
           </div>
           <div className="text-gray-400 font-semibold text-lg mt-12">
             What I've been working on
