@@ -9,6 +9,7 @@ import {
   IconCode,
   IconBrandLinkedin,
   IconBrandGithub,
+  IconFileSpark,
 } from "@tabler/icons-react";
 import Image from "next/image";
 
@@ -72,6 +73,13 @@ export default function Navbar() {
         <IconBrandGithub className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0`} />
       ),
     },
+    {
+      label: "Resume",
+      href: "https://www.dropbox.com/scl/fi/ftauo4nwb2mqknza6qnph/Ritik-s-Resume.pdf?rlkey=takbs7zpukfyo399mxqd2vopx&st=bi76rpi0&dl=1",
+      icon: (
+        <IconFileSpark className={`text-neutral-700 dark:text-neutral-200 dark:group-hover:text-blue-400 h-8 w-8 flex-shrink-0`} />
+      )
+    }
   ];
 
   const [open, setOpen] = useState(false);
@@ -128,6 +136,8 @@ export default function Navbar() {
       </Sidebar>
   );
 }
+
+
 
 
 

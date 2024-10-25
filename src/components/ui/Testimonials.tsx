@@ -126,7 +126,7 @@ const TestomonialCard = ({currentIndex} : {currentIndex : number}) =>
                 <div className="flex items-center mb-4">
                   <Avatar className="h-10 w-10 mr-4">
                     <AvatarImage src={testimonials[currentIndex].avatar} alt={testimonials[currentIndex].name} />
-                    <AvatarFallback>{testimonials[currentIndex].name.charAt(0)}</AvatarFallback>
+                    <AvatarFallback className='dark:bg-neutral-900'>{testimonials[currentIndex].name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-semibold text-gray-100">{testimonials[currentIndex].name}</p>
