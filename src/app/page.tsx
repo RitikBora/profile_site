@@ -27,14 +27,14 @@ const HeroSection = () =>
             <div className="text-gray-400 font-bold">Hello there! I'm Ritik</div>
           </div>
           <br />
-          <div className="text-lg text-gray-400 leading-snug">
+          <div className="text-lg  leading-loose">
              <div>
-                I’m a full-stack developer with over 3 years of experience building scalable web applications. Currently, I work as a Senior Software Developer at <span className="cursor-pointer">miniOrange</span>, a leading product-based company in the cybersecurity domain. </div>
+                I’m a <span className="bg-neutral-700 rounded-lg px-2">full-stack developer</span> with over 3 years of experience building scalable web applications. Currently, I work as a <span className="bg-neutral-700 rounded-lg px-2">Senior Software Developer</span> at <a className="cursor-pointer text-blue-500">miniOrange</a>, a leading product-based company in the <span className="bg-neutral-700 rounded-lg px-2">cybersecurity</span>  domain.</div>
               <br />
              
                
           </div>
-          <div className="text-gray-400 font-semibold text-lg mt-12">
+          <div className="text-gray-400 font-semibold text-lg mt-6">
             What I've been working on
           </div>
         </div>

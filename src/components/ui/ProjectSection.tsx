@@ -36,36 +36,26 @@ const containerVariants = {
 
   const projects : Project[]= [
     {
-      title: "Cat 1",
-      description: "A chat application inspired by discord with chat/audio/video call functionality",
-      imageUrl: "/images/cat.jpg",
-      projectLink: "/",
-      techStack: ["Nextjs" , "Tailwind" , "WebRTC"]
+      title: "Crypto Screener & Exchange Platform",
+      description: "Your all-in-one hub for tracking and trading across global crypto markets.",
+      imageUrl: "/images/xchange.png",
+      projectLink: "https://xchange.ritikboradev.com/",
+      techStack: ["Nextjs" , "Web3" , "ShadCN"]
     },
     {
-      title: "Cat 1",
-      description: "A chat application inspired by discord with chat/audio/video call functionality",
-      imageUrl: "/images/cat.jpg",
-      projectLink: "/",
-      techStack: ["Nextjs" , "Tailwind" , "WebRTC"]
-
+      title: "Crypto Screener & Exchange Platform",
+      description: "Your all-in-one hub for tracking and trading across global crypto markets.",
+      imageUrl: "/images/xchange.png",
+      projectLink: "https://xchange.ritikboradev.com/",
+      techStack: ["Nextjs" , "Web3" , "ShadCN"]
+    },{
+      title: "Crypto Screener & Exchange Platform",
+      description: "Your all-in-one hub for tracking and trading across global crypto markets.",
+      imageUrl: "/images/xchange.png",
+      projectLink: "https://xchange.ritikboradev.com/",
+      techStack: ["Nextjs" , "Web3" , "ShadCN"]
     },
-    {
-      title: "Cat 1",
-      description: "A chat application inspired by discord with chat/audio/video call functionality",
-      imageUrl: "/images/cat.jpg",
-      projectLink: "/",
-      techStack: ["Nextjs" , "Tailwind" , "WebRTC"]
-
-    },
-    {
-      title: "Cat 1",
-      description: "A chat application inspired by discord with chat/audio/video call functionality",
-      imageUrl: "/images/cat.jpg",
-      projectLink: "/",
-      techStack: ["Nextjs" , "Tailwind" , "WebRTC"]
-
-    }
+   
   ]
 export const ProjectSection = () =>
 {
