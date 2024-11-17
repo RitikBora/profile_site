@@ -43,11 +43,11 @@ const containerVariants = {
       techStack: ["Nextjs" , "Web3" , "ShadCN"]
     },
     {
-      title: "Crypto Screener & Exchange Platform",
-      description: "Your all-in-one hub for tracking and trading across global crypto markets.",
-      imageUrl: "/images/xchange.png",
+      title: "MeetWise - Connect, Collaborate, Succeed",
+      description: "Smart, seamless video meetings for effective collaboration",
+      imageUrl: "/images/meetwise.png",
       projectLink: "https://xchange.ritikboradev.com/",
-      techStack: ["Nextjs" , "Web3" , "ShadCN"]
+      techStack: ["WebRTC" , "WebSockets" , "Framer motion" , "Reactjs"]
     },{
       title: "Crypto Screener & Exchange Platform",
       description: "Your all-in-one hub for tracking and trading across global crypto markets.",
