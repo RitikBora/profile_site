@@ -174,19 +174,11 @@ export const SidebarLink = ({
   const { open, animate } = useSidebar();
 
 
-  const variants = {
-    hidden: { x: -100, opacity: 0 },  
-    visible: { x: 0, opacity: 1 },    
-  };
 
 
   return type === "external" ? (
-     <motion.div
+     <div
       className="flex flex-1"
-      initial="hidden"        
-      animate="visible"       
-      variants={variants}     
-      transition={{ duration: 0.5 }} 
     >
     <a
       href={link.href}
@@ -210,15 +202,11 @@ export const SidebarLink = ({
         {link.label}
       </motion.span>
     </a>
-    </motion.div>
+    </div>
     
   ) : (
-   <motion.div
+   <div
       className="flex flex-1"
-      initial="hidden"        
-      animate="visible"       
-      variants={variants}     
-      transition={{ duration: 0.5 }} 
     >
     <Link
       href={link.href}
@@ -241,6 +229,6 @@ export const SidebarLink = ({
         {link.label}
       </motion.span>
     </Link>
-    </motion.div>
+    </div>
   );
 };

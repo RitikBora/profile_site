@@ -99,7 +99,7 @@ export default function Navbar() {
     console.log(page);
   } , [])
   return (
-      <Sidebar open={open} setOpen={setOpen} animate={false}>
+      <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between gap-12">
           <div className="pt-5">
             <SidebarLink
