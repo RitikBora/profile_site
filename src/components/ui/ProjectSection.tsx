@@ -46,15 +46,15 @@ const containerVariants = {
       title: "MeetWise - Connect, Collaborate, Succeed",
       description: "Smart, seamless video meetings for effective collaboration",
       imageUrl: "/images/meetwise.png",
-      projectLink: "https://xchange.ritikboradev.com/",
+      projectLink: "https://meetwise.ritikboradev.com/",
       techStack: ["WebRTC" , "WebSockets" , "Framer motion" , "Reactjs"]
     },{
-      title: "Crypto Screener & Exchange Platform",
-      description: "Your all-in-one hub for tracking and trading across global crypto markets.",
-      imageUrl: "/images/xchange.png",
-      projectLink: "https://xchange.ritikboradev.com/",
-      techStack: ["Nextjs" , "Web3" , "ShadCN"]
-    },
+      title: "TokenForge - Token Creation & Airdrop Platform",
+      description: "Unlock the future of Web3 with TokenForge – your gateway to effortless token creation and airdrop distribution.",
+      imageUrl: "/images/token_forge.png",
+      projectLink: "https://tokenforge.ritikboradev.com/",
+      techStack: ["ReactJS", "Web3", "Daaps"]
+    }
    
   ]
 export const ProjectSection = () =>
