@@ -100,7 +100,7 @@ export default function Navbar() {
   } , [])
   return (
       <Sidebar open={open} setOpen={setOpen} animate={true}>
-        <SidebarBody className="justify-between gap-12">
+        <SidebarBody className="justify-between gap-12 ">
           <div className="pt-5">
             <SidebarLink
               link={{
@@ -119,7 +119,7 @@ export default function Navbar() {
               type="external"
             />
           </div>
-          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden gap-24">
+          <div className={`flex flex-col flex-1 overflow-x-hidden gap-24 ${open ? "overflow-y-auto" : "overflow-y-hidden"}`}>
             <div className="flex flex-col gap-3">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} selectedPage={selectedPage} setSelectedPage={setSelectedPage}/>
