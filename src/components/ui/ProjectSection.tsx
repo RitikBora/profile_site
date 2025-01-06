@@ -48,7 +48,16 @@ const containerVariants = {
       imageUrl: "/images/meetwise.png",
       projectLink: "https://meetwise.ritikboradev.com/",
       techStack: ["WebRTC" , "WebSockets" , "Framer motion" , "Reactjs"]
-    },{
+    },
+      {
+      title: "ChessMates - Elevate Your Chess Game",
+      description: "A P2P Realtime Chess player",
+      imageUrl: "/images/chess.png",
+      projectLink: "https://chess.ritikboradev.com/",
+      techStack: ["Reactjs", "WebSockets" , "Framer motion" ]
+    },
+    
+    {
       title: "TokenForge - Token Creation & Airdrop Platform",
       description: "Unlock the future of Web3 with TokenForge – your gateway to effortless token creation and airdrop distribution.",
       imageUrl: "/images/token_forge.png",
