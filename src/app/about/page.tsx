@@ -44,7 +44,7 @@ const AboutSection = () =>
             >
               <img src="/images/about.png" alt="me" height="300px" width="300px" className="flex-initial rounded-lg rotate-3 border-4 border-black"/>
               <div className="flex gap-10 pl-3">
-                <LitUpButton text="view resume" href="https://drive.google.com/file/d/10ichiHcIg3i3ybQr4GhCHIjeieKYSfMz/view"/>
+                <LitUpButton text="view resume" href="https://drive.google.com/file/d/1W7bFQ3YLRe98T-NZwpWSKHS3hIjlG6He/view"/>
                 <LitUpButton text="hire me" href="mailto:ritikbora2000@gmail.com"/>
               </div>      
             </motion.div>
