@@ -42,11 +42,18 @@ export function Navbar() {
           width,
           y,
           maxWidth: "100%",
-          background: "color-mix(in oklch, var(--background) 80%, transparent)",
+          // At the top the bar is transparent/borderless/shadowless so it blends
+          // into the page; on scroll the glass bg + border + shadow smoothly fade
+          // in as it contracts to a floating pill (and fade back out at the top).
+          backgroundColor: scrolled
+            ? "color-mix(in oklch, var(--background) 80%, transparent)"
+            : "transparent",
+          borderColor: scrolled ? "var(--border)" : "transparent",
           boxShadow: scrolled ? "var(--shadow-lg)" : "0 0 0 0 transparent",
+          transition:
+            "background-color 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s cubic-bezier(0.22,1,0.36,1)",
         }}
-        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-        className="flex items-center gap-3 rounded-full border border-border px-4 py-2 backdrop-blur-md"
+        className="flex items-center gap-3 rounded-full border px-4 py-2 backdrop-blur-md"
       >
         {/* wordmark */}
         <Link href="/" className="flex items-center gap-2.5">
