@@ -2,27 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { PROJECTS } from "@/constants/projects";
+import { EMAIL, RESUME_URL } from "@/constants/site";
+import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
+import { AboutCard } from "@/components/about-card";
 import { ProjectCarousel } from "@/components/project-carousel";
-
-type TimelineItem = {
-  date: string;
-  title: string;
-  org: string;
-};
-
-const TIMELINE: TimelineItem[] = [
-  { date: "2024 — present", title: "Senior Software Engineer", org: "miniOrange" },
-  { date: "2021 — 24", title: "Software Engineer", org: "miniOrange" },
-  { date: "2020 — 21", title: "Software Developer Intern", org: "Copper Cloud" },
-  { date: "2017 — 21", title: "B.E. E&TC", org: "Army Institute of Technology, Pune" },
-];
+import { Timeline } from "@/components/timeline";
+import { Socials } from "@/components/socials";
 
 const HERO_TEXT = "I build scalable web applications, end‑to‑end";
-const EMAIL = "ritikbora2000@gmail.com";
-const RESUME_URL = "https://drive.google.com/file/d/1W7bFQ3YLRe98T-NZwpWSKHS3hIjlG6He/view";
-const GITHUB_URL = "https://github.com/RitikBora";
-const LINKEDIN_URL = "https://www.linkedin.com/in/ritikbora";
 
 export default function Home() {
   const [typed, setTyped] = useState("");
@@ -64,13 +52,9 @@ export default function Home() {
   return (
     <div className="rb-root">
       {/* main fills the full 896px content column; horizontal padding lives on
-          each section so the section divider lines run full-bleed to the frame. */}
+          each Section so the divider lines run full-bleed to the frame. */}
       <main>
-        <section
-          id="top"
-          className="rb-reveal"
-          style={{ borderTop: 0, padding: "clamp(60px,10vw,116px) clamp(20px,5vw,40px) clamp(50px,7vw,80px)", scrollMarginTop: 72 }}
-        >
+        <Section id="top" first>
           <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
             $ whoami
           </div>
@@ -105,87 +89,23 @@ export default function Home() {
               <span className="rb-dim">exp&nbsp;</span>&nbsp;&nbsp;3+ years · MERN, Next.js, Java
             </span>
           </div>
-        </section>
+        </Section>
 
-        <section
-          id="about"
-          className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
-        >
+        <Section id="about">
           <SectionLabel>// about</SectionLabel>
-          <div className="rb-about">
-            <div className="rb-mono" style={{ fontSize: 14 }}>
-              <div style={{ display: "grid", gridTemplateColumns: "104px 1fr", gap: 14, padding: "14px 0", borderBottom: "1px solid var(--border)" }}>
-                <span className="rb-dim">name</span>
-                <span>Ritik Bora</span>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "104px 1fr", gap: 14, padding: "14px 0", borderBottom: "1px solid var(--border)" }}>
-                <span className="rb-dim">focus</span>
-                <span>full&#8209;stack · MERN · Next.js</span>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "104px 1fr", gap: 14, padding: "14px 0", borderBottom: "1px solid var(--border)" }}>
-                <span className="rb-dim">domain</span>
-                <span className="rb-em">cybersecurity</span>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "104px 1fr", gap: 14, padding: "14px 0" }}>
-                <span className="rb-dim">based</span>
-                <span>Pune, India</span>
-              </div>
-            </div>
-            <img
-              className="rb-photo"
-              src="/images/about.png"
-              alt="Ritik Bora"
-              width={210}
-              height={210}
-              style={{
-                width: 210,
-                height: 210,
-                borderRadius: 14,
-                objectFit: "cover",
-                transform: "rotate(3deg)",
-                border: "4px solid var(--foreground)",
-                boxShadow: "var(--shadow-xl)",
-              }}
-            />
-          </div>
-        </section>
+          <AboutCard />
+        </Section>
 
-        <section
-          id="projects"
-          className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
-        >
+        <Section id="projects">
           <ProjectCarousel projects={PROJECTS} />
-        </section>
+        </Section>
 
-        <section
-          id="career"
-          className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
-        >
+        <Section id="career">
           <SectionLabel>// career</SectionLabel>
-          <div className="rb-timeline" style={{ marginTop: 26, borderLeft: "2px solid var(--border)", paddingLeft: 26, display: "flex", flexDirection: "column", gap: 30 }}>
-            {TIMELINE.map((t) => (
-              <div key={t.date} className="rb-tnode" style={{ position: "relative" }}>
-                <span className="rb-tdot" style={{ position: "absolute", left: -34, top: 5, width: 11, height: 11, borderRadius: "50%", background: "var(--border)" }} />
-                <div className="rb-tdate rb-mono" style={{ fontSize: 11.5, color: "var(--muted-foreground)", letterSpacing: ".04em" }}>
-                  {t.date}
-                </div>
-                <div style={{ fontWeight: 600, fontSize: 17, marginTop: 5 }}>{t.title}</div>
-                <div className="rb-mono rb-dim" style={{ fontSize: 11.5, marginTop: 4 }}>
-                  {t.org}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+          <Timeline />
+        </Section>
 
-        <section
-          id="contact"
-          className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px) clamp(56px,8vw,96px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
-        >
+        <Section id="contact" last>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
             <SectionLabel>// contact</SectionLabel>
             <div className="rb-mono" style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 11, color: "var(--muted-foreground)" }}>
@@ -250,18 +170,8 @@ export default function Home() {
               résumé.pdf ↓
             </a>
           </div>
-          <div style={{ marginTop: 36, paddingTop: 20, borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", gap: 22, flexWrap: "wrap" }}>
-            <a className="rb-foot rb-mono" href={GITHUB_URL} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11 }}>
-              github ↗
-            </a>
-            <a className="rb-foot rb-mono" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11 }}>
-              linkedin ↗
-            </a>
-            <span className="rb-mono rb-dim" style={{ fontSize: 11, marginLeft: "auto" }}>
-              pune, in · UTC+5:30
-            </span>
-          </div>
-        </section>
+          <Socials />
+        </Section>
       </main>
     </div>
   );
