@@ -143,11 +143,13 @@ export default function Home() {
 
   return (
     <div className="rb-root">
-      <main style={{ maxWidth: 880, margin: "0 auto", padding: "0 clamp(20px,5vw,40px)" }}>
+      {/* main fills the full 896px content column; horizontal padding lives on
+          each section so the section divider lines run full-bleed to the frame. */}
+      <main>
         <section
           id="top"
           className="rb-reveal"
-          style={{ borderTop: 0, padding: "clamp(60px,10vw,116px) 0 clamp(50px,7vw,80px)", scrollMarginTop: 72 }}
+          style={{ borderTop: 0, padding: "clamp(60px,10vw,116px) clamp(20px,5vw,40px) clamp(50px,7vw,80px)", scrollMarginTop: 72 }}
         >
           <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
             $ whoami
@@ -188,7 +190,7 @@ export default function Home() {
         <section
           id="about"
           className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) 0", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
+          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
           <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
             // about
@@ -234,7 +236,7 @@ export default function Home() {
         <section
           id="projects"
           className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) 0", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
+          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
             <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
@@ -317,7 +319,7 @@ export default function Home() {
         <section
           id="career"
           className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) 0", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
+          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
           <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
             // career
@@ -341,7 +343,7 @@ export default function Home() {
         <section
           id="contact"
           className="rb-reveal"
-          style={{ padding: "clamp(46px,7vw,80px) 0 clamp(56px,8vw,96px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
+          style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px) clamp(56px,8vw,96px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
             <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
