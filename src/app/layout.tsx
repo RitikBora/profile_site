@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ViewTransitions } from "next-view-transitions";
+import { Toaster } from "sonner";
 import { Navbar } from "@/components/navbar";
 
 const outfit = Outfit({
@@ -33,24 +35,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
-      </head>
-      <body className={`${outfit.variable} ${jetbrainsMono.variable}`}>
-        <Navbar />
-        {/* Boundary frame — matches the clone's PageContainer laptop sizing:
-            w-8 (32px) hatched bands flanking a max-w-4xl (896px) content column,
-            forced to the full 4xl at lg+ (lg:min-w-[56rem] = Tailwind-v3
-            equivalent of the clone's v4 min-w-4xl); free to shrink below lg. */}
-        <div className="flex min-h-screen w-full justify-center">
-          <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
-          <div className="w-full max-w-4xl bg-background lg:min-w-[56rem]">
-            {children}
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        </head>
+        <body className={`${outfit.variable} ${jetbrainsMono.variable}`}>
+          <Toaster position="top-center" />
+          <Navbar />
+          {/* Boundary frame — matches the clone's PageContainer laptop sizing:
+              w-8 (32px) hatched bands flanking a max-w-4xl (896px) content column,
+              forced to the full 4xl at lg+ (lg:min-w-[56rem] = Tailwind-v3
+              equivalent of the clone's v4 min-w-4xl); free to shrink below lg. */}
+          <div className="flex min-h-screen w-full justify-center">
+            <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
+            <div className="w-full max-w-4xl bg-background lg:min-w-[56rem]">
+              {children}
+            </div>
+            <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
           </div>
-          <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
