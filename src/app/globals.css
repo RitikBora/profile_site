@@ -2,82 +2,380 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   DESIGN TOKENS — Supabase theme (tweakcn), oklch.
+   Light is the default; .dark overrides on <html>.
+   ============================================================ */
+
 :root {
-    --background-color: white;
-    --text-color: black;
+  /* --- surfaces --- */
+  --background: oklch(0.9911 0 0);
+  --foreground: oklch(0.2046 0 0);
+  --card: oklch(0.9911 0 0);
+  --card-foreground: oklch(0.2046 0 0);
+  --popover: oklch(0.9911 0 0);
+  --popover-foreground: oklch(0.4386 0 0);
+
+  /* --- brand green (Supabase) --- */
+  --primary: oklch(0.8348 0.1302 160.9080);
+  --primary-foreground: oklch(0.2626 0.0147 166.4589);
+
+  /* --- neutrals --- */
+  --secondary: oklch(0.9940 0 0);
+  --secondary-foreground: oklch(0.2046 0 0);
+  --muted: oklch(0.9461 0 0);
+  --muted-foreground: oklch(0.2435 0 0);
+  --accent: oklch(0.9461 0 0);
+  --accent-foreground: oklch(0.2435 0 0);
+
+  /* --- semantic --- */
+  --destructive: oklch(0.5523 0.1927 32.7272);
+  --destructive-foreground: oklch(0.9934 0.0032 17.2118);
+
+  /* --- lines & fields --- */
+  --border: oklch(0.9037 0 0);
+  --input: oklch(0.9731 0 0);
+  --ring: oklch(0.8348 0.1302 160.9080);
+
+  /* --- accent used across the portfolio --- */
+  --em: oklch(0.53 0.13 161);
+
+  /* ---- Spacing / radius / shadow / motion ---- */
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-full: 9999px;
+
+  --shadow-sm: 0px 1px 3px 0px hsl(0 0% 0% / 0.09), 0px 1px 2px -1px hsl(0 0% 0% / 0.09);
+  --shadow-lg: 0px 1px 3px 0px hsl(0 0% 0% / 0.17), 0px 4px 6px -1px hsl(0 0% 0% / 0.17);
+  --shadow-xl: 0px 1px 3px 0px hsl(0 0% 0% / 0.17), 0px 8px 10px -1px hsl(0 0% 0% / 0.17);
+
+  --glow-primary: 0 0 0 3px color-mix(in oklch, var(--ring) 35%, transparent);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
 }
 
 .dark {
-    --background-color: black;
-    --text-color: white;
+  --background: oklch(0.1822 0 0);
+  --foreground: oklch(0.9288 0.0126 255.5078);
+  --card: oklch(0.2046 0 0);
+  --card-foreground: oklch(0.9288 0.0126 255.5078);
+  --popover: oklch(0.2603 0 0);
+  --popover-foreground: oklch(0.7348 0 0);
+
+  --primary: oklch(0.4365 0.1044 156.7556);
+  --primary-foreground: oklch(0.9213 0.0135 167.1556);
+
+  --secondary: oklch(0.2603 0 0);
+  --secondary-foreground: oklch(0.9851 0 0);
+  --muted: oklch(0.2393 0 0);
+  --muted-foreground: oklch(0.7122 0 0);
+  --accent: oklch(0.3132 0 0);
+  --accent-foreground: oklch(0.9851 0 0);
+
+  --destructive: oklch(0.3123 0.0852 29.7877);
+  --destructive-foreground: oklch(0.9368 0.0045 34.3092);
+
+  --border: oklch(0.2809 0 0);
+  --input: oklch(0.2603 0 0);
+  --ring: oklch(0.8003 0.1821 151.7110);
+
+  --em: oklch(0.80 0.1821 151.71);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
 }
 
-@layer base {
-  :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-  .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--glow-primary);
+  border-radius: var(--radius-sm);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================================
+   PORTFOLIO COMPONENT STYLES
+   ============================================================ */
+
+.rb-root {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.01em;
+}
+.rb-root,
+.rb-root * {
+  transition: background-color 0.42s var(--ease-standard), border-color 0.42s var(--ease-standard),
+    color 0.42s var(--ease-standard), fill 0.42s var(--ease-standard);
+}
+.rb-mono {
+  font-family: var(--font-jbmono), ui-monospace, monospace;
+}
+.rb-em {
+  color: var(--em);
+}
+.rb-dim {
+  color: color-mix(in oklch, var(--foreground) 42%, var(--background));
+}
+.rb-root a {
+  color: var(--em);
+}
+
+.rb-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-emphasized), transform 0.7s var(--ease-emphasized);
+}
+.rb-reveal.rb-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes rb-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.rb-caret {
+  display: inline-block;
+  width: 0.09em;
+  min-width: 9px;
+  height: 0.92em;
+  background: var(--em);
+  margin-left: 0.1em;
+  transform: translateY(0.14em);
+  animation: rb-blink 1.05s steps(1) infinite;
+}
+
+@keyframes rb-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(2.9);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.rb-stat {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+}
+.rb-stat i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--em);
+  display: block;
+}
+.rb-stat b {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--em);
+  animation: rb-pulse 2.2s ease-out infinite;
+}
+
+.rb-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+.rb-track::-webkit-scrollbar {
+  display: none;
+}
+.rb-pcard {
+  flex: 0 0 calc((100% - 36px) / 3);
+  scroll-snap-align: start;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-emphasized), border-color 0.35s var(--ease-standard),
+    box-shadow 0.4s var(--ease-emphasized);
+}
+.rb-pcard:hover {
+  transform: translateY(-6px);
+  border-color: var(--em);
+  box-shadow: var(--shadow-lg);
+}
+.rb-thumb {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.rb-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.55s var(--ease-emphasized);
+}
+.rb-pcard:hover .rb-thumb img {
+  transform: scale(1.05);
+}
+.rb-pcard:hover .rb-ptitle {
+  color: var(--em);
+}
+.rb-chip {
+  font-family: var(--font-jbmono), ui-monospace, monospace;
+  font-size: 9.5px;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--muted-foreground);
+  background: var(--background);
+  white-space: nowrap;
+}
+.rb-arrow {
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.rb-pcard:hover .rb-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.rb-about {
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  gap: 44px;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.rb-timeline .rb-tnode:first-child .rb-tdot {
+  background: var(--em);
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--em) 20%, transparent);
+}
+.rb-timeline .rb-tnode:first-child .rb-tdate {
+  color: var(--em);
+}
+
+.rb-navlinks {
+  display: flex;
+  gap: 24px;
+}
+.rb-navlinks a {
+  text-decoration: none;
+  color: color-mix(in oklch, var(--foreground) 55%, var(--background));
+}
+.rb-navlinks a:hover {
+  color: var(--em);
+}
+
+.rb-foot {
+  text-decoration: none;
+  color: var(--muted-foreground);
+}
+.rb-foot:hover {
+  color: var(--em);
+}
+
+.rb-iconbtn {
+  border-color: var(--border);
+}
+.rb-iconbtn:hover {
+  border-color: var(--em);
+  color: var(--em);
+}
+
+.rb-cta-ghost:hover {
+  border-color: var(--em);
+  color: var(--em);
+}
+
+.rb-cta-primary:hover {
+  filter: brightness(1.05);
+}
+
+.rb-navbtn {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.rb-navbtn.rb-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.rb-navbtn:hover {
+  border-color: var(--em);
+  color: var(--em);
+}
+
+@media (max-width: 760px) {
+  .rb-pcard {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+}
+@media (max-width: 620px) {
+  .rb-navlinks {
+    display: none;
+  }
+  .rb-about {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .rb-photo {
+    order: -1;
+    justify-self: start;
+  }
+}
+@media (max-width: 520px) {
+  .rb-pcard {
+    flex-basis: 84%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-caret,
+  .rb-stat b,
+  .rb-thumb img {
+    animation: none;
+    transition: none;
+  }
+  .rb-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
