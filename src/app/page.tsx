@@ -70,26 +70,11 @@ function pad(n: number) {
 }
 
 export default function Home() {
-  const [dark, setDark] = useState(true);
   const [typed, setTyped] = useState("");
   const trackRef = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState(`01–03 / ${pad(PROJECTS.length)}`);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
-
-  // Sync theme state with the class applied by the pre-hydration bootstrap script.
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
-
-  const toggleTheme = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    try {
-      localStorage.setItem("rb-theme", next ? "dark" : "light");
-    } catch (e) {}
-  };
 
   // Typewriter hero
   useEffect(() => {
@@ -158,75 +143,6 @@ export default function Home() {
 
   return (
     <div className="rb-root">
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 20,
-          backdropFilter: "blur(12px)",
-          background: "color-mix(in oklch,var(--background) 82%,transparent)",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1180,
-            margin: "0 auto",
-            padding: "0 clamp(20px,5vw,40px)",
-            height: 60,
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
-            <span style={{ display: "flex", gap: 5 }}>
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--em)" }} />
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--border)" }} />
-              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--border)" }} />
-            </span>
-            <span className="rb-mono" style={{ fontSize: 12.5, color: "var(--foreground)", whiteSpace: "nowrap" }}>
-              ritik-bora.dev
-            </span>
-          </div>
-          <nav className="rb-navlinks rb-mono" style={{ marginLeft: "auto", fontSize: 12 }}>
-            <a href="#about">about</a>
-            <a href="#projects">projects</a>
-            <a href="#career">career</a>
-            <a href="#contact">contact</a>
-          </nav>
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="rb-iconbtn"
-            style={{
-              marginLeft: "auto",
-              width: 34,
-              height: 34,
-              borderRadius: 9,
-              border: "1px solid var(--border)",
-              background: "transparent",
-              color: "var(--foreground)",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {!dark ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            ) : (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-              </svg>
-            )}
-          </button>
-        </div>
-      </header>
-
       <main style={{ maxWidth: 880, margin: "0 auto", padding: "0 clamp(20px,5vw,40px)" }}>
         <section
           id="top"

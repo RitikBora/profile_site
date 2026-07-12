@@ -120,6 +120,21 @@ body {
    PORTFOLIO COMPONENT STYLES
    ============================================================ */
 
+/* Boundary "ruler" hatch for the frame bands flanking the content column.
+   Matches the clone's PageContainer pattern: 315deg lines on a 10px tile,
+   pinned to the viewport (background-attachment: fixed). */
+.rb-hatch-bg {
+  background-image: repeating-linear-gradient(
+    315deg,
+    var(--border) 0,
+    var(--border) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 10px 10px;
+  background-attachment: fixed;
+}
+
 .rb-root {
   background: var(--background);
   color: var(--foreground);
