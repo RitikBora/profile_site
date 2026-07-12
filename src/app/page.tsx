@@ -1,56 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
-type Project = {
-  idx: string;
-  n: string;
-  desc: string;
-  tech: string[];
-  img: string;
-  url: string;
-};
+import { useEffect, useState } from "react";
+import { PROJECTS } from "@/constants/projects";
+import { SectionLabel } from "@/components/section-label";
+import { ProjectCarousel } from "@/components/project-carousel";
 
 type TimelineItem = {
   date: string;
   title: string;
   org: string;
 };
-
-const PROJECTS: Project[] = [
-  {
-    idx: "01",
-    n: "Crypto Screener & Exchange",
-    desc: "Track and trade across global crypto markets — all in one hub.",
-    tech: ["Next.js", "Web3", "shadcn"],
-    img: "/images/xchange.png",
-    url: "https://xchange.ritikboradev.com/",
-  },
-  {
-    idx: "02",
-    n: "MeetWise",
-    desc: "Smart, seamless video meetings built for real collaboration.",
-    tech: ["WebRTC", "WebSockets", "React"],
-    img: "/images/meetwise.png",
-    url: "https://meetwise.ritikboradev.com/",
-  },
-  {
-    idx: "03",
-    n: "ChessMates",
-    desc: "Peer-to-peer realtime chess, right in the browser.",
-    tech: ["React", "WebSockets"],
-    img: "/images/chess.png",
-    url: "https://chess.ritikboradev.com/",
-  },
-  {
-    idx: "04",
-    n: "TokenForge",
-    desc: "Effortless token creation and airdrop distribution for Web3.",
-    tech: ["React", "Web3", "dApps"],
-    img: "/images/token_forge.png",
-    url: "https://tokenforge.ritikboradev.com/",
-  },
-];
 
 const TIMELINE: TimelineItem[] = [
   { date: "2024 — present", title: "Senior Software Engineer", org: "miniOrange" },
@@ -65,16 +24,8 @@ const RESUME_URL = "https://drive.google.com/file/d/1W7bFQ3YLRe98T-NZwpWSKHS3hIj
 const GITHUB_URL = "https://github.com/RitikBora";
 const LINKEDIN_URL = "https://www.linkedin.com/in/ritikbora";
 
-function pad(n: number) {
-  return String(n).padStart(2, "0");
-}
-
 export default function Home() {
   const [typed, setTyped] = useState("");
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [count, setCount] = useState(`01–03 / ${pad(PROJECTS.length)}`);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
 
   // Typewriter hero
   useEffect(() => {
@@ -109,37 +60,6 @@ export default function Home() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
-
-  // Projects carousel
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const update = () => {
-      const card = track.querySelector<HTMLElement>(".rb-pcard");
-      if (!card) return;
-      const cw = card.getBoundingClientRect().width + 18;
-      const first = Math.round(track.scrollLeft / cw);
-      const vis = Math.max(1, Math.round(track.clientWidth / cw));
-      const total = PROJECTS.length;
-      const last = Math.min(first + vis, total);
-      setCount(`${pad(first + 1)}–${pad(last)} / ${pad(total)}`);
-      setAtStart(track.scrollLeft <= 2);
-      setAtEnd(track.scrollLeft + track.clientWidth >= track.scrollWidth - 2);
-    };
-    update();
-    track.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      track.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
-
-  const scrollByDir = (dir: number) => {
-    const t = trackRef.current;
-    if (!t) return;
-    t.scrollBy({ left: dir * t.clientWidth * 0.92, behavior: "smooth" });
-  };
 
   return (
     <div className="rb-root">
@@ -192,9 +112,7 @@ export default function Home() {
           className="rb-reveal"
           style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
-          <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
-            // about
-          </div>
+          <SectionLabel>// about</SectionLabel>
           <div className="rb-about">
             <div className="rb-mono" style={{ fontSize: 14 }}>
               <div style={{ display: "grid", gridTemplateColumns: "104px 1fr", gap: 14, padding: "14px 0", borderBottom: "1px solid var(--border)" }}>
@@ -238,82 +156,7 @@ export default function Home() {
           className="rb-reveal"
           style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-            <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
-              // projects
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <span className="rb-mono rb-dim" style={{ fontSize: 11 }}>
-                {count}
-              </span>
-              <div style={{ display: "flex", gap: 7 }}>
-                <button
-                  onClick={() => scrollByDir(-1)}
-                  aria-label="Previous"
-                  className={`rb-navbtn rb-mono ${!atStart ? "rb-active" : ""}`}
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 8,
-                    border: "1px solid var(--border)",
-                    background: "transparent",
-                    color: "var(--foreground)",
-                    cursor: "pointer",
-                    fontSize: 14,
-                  }}
-                >
-                  ←
-                </button>
-                <button
-                  onClick={() => scrollByDir(1)}
-                  aria-label="Next"
-                  className={`rb-navbtn rb-mono ${!atEnd ? "rb-active" : ""}`}
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 8,
-                    border: "1px solid var(--border)",
-                    background: "transparent",
-                    color: "var(--foreground)",
-                    cursor: "pointer",
-                    fontSize: 14,
-                  }}
-                >
-                  →
-                </button>
-              </div>
-            </div>
-          </div>
-          <div id="rb-track" className="rb-track" ref={trackRef} style={{ marginTop: 22 }}>
-            {PROJECTS.map((p) => (
-              <a key={p.idx} className="rb-pcard" href={p.url} target="_blank" rel="noopener noreferrer">
-                <div className="rb-thumb">
-                  <img src={p.img} alt={p.n} />
-                </div>
-                <div style={{ padding: "15px 15px 16px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 9 }}>
-                    <span className="rb-mono rb-em" style={{ fontSize: 10.5, fontWeight: 500 }}>
-                      {p.idx}
-                    </span>
-                    <span className="rb-ptitle" style={{ fontWeight: 600, fontSize: 14.5, lineHeight: 1.25 }}>
-                      {p.n}
-                    </span>
-                    <span className="rb-arrow rb-em" style={{ marginLeft: "auto", fontSize: 13 }}>
-                      ↗
-                    </span>
-                  </div>
-                  <div style={{ fontSize: 12, lineHeight: 1.5, color: "var(--muted-foreground)" }}>{p.desc}</div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: "auto", paddingTop: 6 }}>
-                    {p.tech.map((tag) => (
-                      <span key={tag} className="rb-chip">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+          <ProjectCarousel projects={PROJECTS} />
         </section>
 
         <section
@@ -321,9 +164,7 @@ export default function Home() {
           className="rb-reveal"
           style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
-          <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
-            // career
-          </div>
+          <SectionLabel>// career</SectionLabel>
           <div className="rb-timeline" style={{ marginTop: 26, borderLeft: "2px solid var(--border)", paddingLeft: 26, display: "flex", flexDirection: "column", gap: 30 }}>
             {TIMELINE.map((t) => (
               <div key={t.date} className="rb-tnode" style={{ position: "relative" }}>
@@ -346,9 +187,7 @@ export default function Home() {
           style={{ padding: "clamp(46px,7vw,80px) clamp(20px,5vw,40px) clamp(56px,8vw,96px)", borderTop: "1px solid var(--border)", scrollMarginTop: 72 }}
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-            <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".16em", color: "color-mix(in oklch,var(--foreground) 42%,var(--background))" }}>
-              // contact
-            </div>
+            <SectionLabel>// contact</SectionLabel>
             <div className="rb-mono" style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 11, color: "var(--muted-foreground)" }}>
               <span className="rb-stat">
                 <i></i>
