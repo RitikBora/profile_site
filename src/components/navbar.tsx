@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   useScroll,
   useTransform,
-} from "framer-motion";
+} from "motion/react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 
