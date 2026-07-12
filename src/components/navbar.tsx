@@ -24,8 +24,11 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const { scrollY } = useScroll();
-  // Aceternity-style shrink: full width at the top, contracts to a pill on scroll.
-  const width = useTransform(scrollY, [0, 100], ["100%", "78%"]);
+  // At the top the bar is exactly the content-column width (56rem = max-w-4xl,
+  // 896px) so its edges line up with the framed content; on scroll it contracts
+  // to a floating pill. Driven in rem (not viewport %) so the top width always
+  // equals the content and the shrink stays visible at wide/laptop viewports.
+  const width = useTransform(scrollY, [0, 100], ["56rem", "44rem"]);
   const y = useTransform(scrollY, [0, 100], [0, 6]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -38,7 +41,7 @@ export function Navbar() {
         style={{
           width,
           y,
-          maxWidth: 1180,
+          maxWidth: "100%",
           background: "color-mix(in oklch, var(--background) 80%, transparent)",
           boxShadow: scrolled ? "var(--shadow-lg)" : "0 0 0 0 transparent",
         }}
