@@ -1,4 +1,5 @@
 import { Project } from "@/constants/projects";
+import { TECH_ICONS } from "@/constants/tech";
 
 /** A single project card (thumbnail, index, title, description, tech chips). */
 export function ProjectCard({ project }: { project: Project }) {
@@ -20,12 +21,19 @@ export function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
         <div style={{ fontSize: 12, lineHeight: 1.5, color: "var(--muted-foreground)" }}>{project.desc}</div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: "auto", paddingTop: 6 }}>
-          {project.tech.map((tag) => (
-            <span key={tag} className="rb-chip">
-              {tag}
-            </span>
-          ))}
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 11, marginTop: "auto", paddingTop: 8 }}>
+          {project.tech.map((tag) => {
+            const Icon = TECH_ICONS[tag];
+            return Icon ? (
+              <span key={tag} className="rb-techicon" title={tag} aria-label={tag} style={{ display: "inline-flex" }}>
+                <Icon size={17} />
+              </span>
+            ) : (
+              <span key={tag} className="rb-chip">
+                {tag}
+              </span>
+            );
+          })}
         </div>
       </div>
     </a>
