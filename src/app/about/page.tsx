@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
 import { Timeline } from "@/components/timeline";
+import { Collage } from "@/components/collage";
 
 export const metadata: Metadata = {
   title: "About | Ritik Bora",
@@ -69,6 +70,13 @@ export default function AboutPage() {
                 flexShrink: 0,
               }}
             />
+          </div>
+        </Section>
+
+        <Section id="offclock">
+          <SectionLabel>// off the clock</SectionLabel>
+          <div style={{ marginTop: 8 }}>
+            <Collage />
           </div>
         </Section>
 
