@@ -10,19 +10,21 @@ import { AboutCard } from "@/components/about-card";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { Socials } from "@/components/socials";
 
-const HERO_TEXT = "I build scalable web applications, end‑to‑end";
+const HERO_LINE1 = "I build scalable web";
+const HERO_LINE2 = "applications, end‑to‑end";
+const HERO_LEN = HERO_LINE1.length + HERO_LINE2.length;
 
 export default function Home() {
-  const [typed, setTyped] = useState("");
+  const [count, setCount] = useState(0);
 
-  // Typewriter hero
+  // Typewriter hero — two fixed lines so the wrap point never reflows.
   useEffect(() => {
     let i = 0;
     let stepTimer: ReturnType<typeof setTimeout>;
     const tick = () => {
-      setTyped(HERO_TEXT.slice(0, i));
+      setCount(i);
       i++;
-      if (i <= HERO_TEXT.length) stepTimer = setTimeout(tick, 30);
+      if (i <= HERO_LEN) stepTimer = setTimeout(tick, 30);
     };
     const startTimer = setTimeout(tick, 360);
     return () => {
@@ -30,6 +32,10 @@ export default function Home() {
       clearTimeout(stepTimer);
     };
   }, []);
+
+  const shown1 = HERO_LINE1.slice(0, Math.min(count, HERO_LINE1.length));
+  const shown2 = count > HERO_LINE1.length ? HERO_LINE2.slice(0, count - HERO_LINE1.length) : "";
+  const onLine2 = count >= HERO_LINE1.length;
 
   return (
     <div className="rb-root">
@@ -40,6 +46,8 @@ export default function Home() {
           <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
             $ whoami
           </div>
+          {/* Two fixed lines: each keeps its untyped remainder in-DOM (invisible)
+              so line width + total height stay constant — no reflow as it types. */}
           <h1
             style={{
               margin: "20px 0 0",
@@ -47,11 +55,18 @@ export default function Home() {
               fontSize: "clamp(33px,5.6vw,58px)",
               lineHeight: 1.06,
               letterSpacing: "-.025em",
-              textWrap: "balance",
             }}
           >
-            <span>{typed}</span>
-            <span className="rb-caret" />
+            <span style={{ display: "block", whiteSpace: "nowrap" }}>
+              {shown1}
+              {!onLine2 && <span className="rb-caret" />}
+              <span aria-hidden style={{ opacity: 0 }}>{HERO_LINE1.slice(shown1.length)}</span>
+            </span>
+            <span style={{ display: "block", whiteSpace: "nowrap" }}>
+              {shown2}
+              {onLine2 && <span className="rb-caret" />}
+              <span aria-hidden style={{ opacity: 0 }}>{HERO_LINE2.slice(shown2.length)}</span>
+            </span>
           </h1>
           <div
             className="rb-mono"
@@ -68,7 +83,7 @@ export default function Home() {
               <span className="rb-dim">role</span>&nbsp;&nbsp;senior software developer, miniOrange
             </span>
             <span>
-              <span className="rb-dim">exp&nbsp;</span>&nbsp;&nbsp;3+ years · MERN, Next.js, Java
+              <span className="rb-dim">exp&nbsp;</span>&nbsp;&nbsp;5+ years · MERN, Next.js, Java, AWS
             </span>
           </div>
         </Section>
