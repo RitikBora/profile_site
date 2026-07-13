@@ -300,6 +300,21 @@ body {
   margin-top: 22px;
 }
 
+/* /about page lead: prose bio + photo, top-aligned. */
+.rb-about-lead {
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  gap: 44px;
+  align-items: start;
+  margin-top: 30px;
+}
+@media (max-width: 620px) {
+  .rb-about-lead {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
 .rb-timeline .rb-tnode:first-child .rb-tdot {
   background: var(--em);
   box-shadow: 0 0 0 4px color-mix(in oklch, var(--em) 20%, transparent);
