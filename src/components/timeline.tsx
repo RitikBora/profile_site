@@ -39,7 +39,7 @@ export function Timeline({ items = TIMELINE }: { items?: TimelineItem[] }) {
         const orgDelay = nextDelay();
         return (
           <div key={t.date} className="rb-tnode" style={{ position: "relative" }}>
-            <span className="rb-tdot" style={{ position: "absolute", left: -34, top: 5, width: 11, height: 11, borderRadius: "50%", background: "var(--border)" }} />
+            <span className="rb-tdot" style={{ position: "absolute", left: -32.5, top: 5, width: 11, height: 11, borderRadius: "50%", background: "var(--border)" }} />
             <motion.div className="rb-tdate rb-mono" style={{ fontSize: 11.5, color: "var(--muted-foreground)", letterSpacing: ".04em" }} {...reveal(dateDelay)}>
               {t.date}
             </motion.div>
