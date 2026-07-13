@@ -315,10 +315,6 @@ body {
   }
 }
 
-.rb-timeline .rb-tnode:first-child .rb-tdot {
-  background: var(--em);
-  box-shadow: 0 0 0 4px color-mix(in oklch, var(--em) 20%, transparent);
-}
 .rb-timeline .rb-tnode:first-child .rb-tdate {
   color: var(--em);
 }
