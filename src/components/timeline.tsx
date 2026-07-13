@@ -1,42 +1,18 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { TIMELINE, TimelineItem } from "@/constants/timeline";
 
 /**
- * Vertical career timeline. Aceternity-inspired scroll mechanic: a faint track
- * with a green "beam" that fills top-to-bottom as you scroll through it, and
- * each entry blur-reveals as it enters view. Left-aligned, no side photos.
+ * Vertical career timeline (newest-first). Each entry blur-reveals as it enters
+ * view — the clone/template treatment. Static line, left-aligned, no photos.
  */
 export function Timeline({ items = TIMELINE }: { items?: TimelineItem[] }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 55%"],
-  });
-  const fillHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
     <div
-      ref={ref}
       className="rb-timeline"
-      style={{ position: "relative", marginTop: 26, paddingLeft: 28, display: "flex", flexDirection: "column", gap: 30 }}
+      style={{ marginTop: 26, borderLeft: "2px solid var(--border)", paddingLeft: 26, display: "flex", flexDirection: "column", gap: 30 }}
     >
-      {/* faint full-height track */}
-      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 2, background: "var(--border)" }} />
-      {/* green beam that fills as you scroll through the timeline */}
-      <motion.div
-        style={{
-          position: "absolute",
-          left: 0,
-          top: 0,
-          width: 2,
-          height: fillHeight,
-          background: "var(--em)",
-          boxShadow: "0 0 8px color-mix(in oklch, var(--em) 70%, transparent)",
-        }}
-      />
       {items.map((t) => (
         <motion.div
           key={t.date}
