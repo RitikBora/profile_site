@@ -273,14 +273,6 @@ body {
 .rb-pcard:hover .rb-ptitle {
   color: var(--em);
 }
-.rb-techicon {
-  color: var(--muted-foreground);
-  transition: color 0.2s var(--ease-standard);
-}
-.rb-techicon:hover {
-  color: var(--em);
-}
-
 .rb-chip {
   font-family: var(--font-jbmono), ui-monospace, monospace;
   font-size: 9.5px;

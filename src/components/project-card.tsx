@@ -21,15 +21,22 @@ export function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
         <div style={{ fontSize: 12, lineHeight: 1.5, color: "var(--muted-foreground)" }}>{project.desc}</div>
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 11, marginTop: "auto", paddingTop: 8 }}>
+        {/* Overlapping circular tech badges — matches the template's stack. */}
+        <div className="flex flex-wrap items-center" style={{ marginTop: "auto", paddingTop: 10 }}>
           {project.tech.map((tag) => {
             const Icon = TECH_ICONS[tag];
             return Icon ? (
-              <span key={tag} className="rb-techicon" title={tag} aria-label={tag} style={{ display: "inline-flex" }}>
-                <Icon size={17} />
-              </span>
+              <div
+                key={tag}
+                tabIndex={0}
+                title={tag}
+                aria-label={tag}
+                className="-mr-3 flex items-center justify-center rounded-full border border-border bg-accent p-1 text-muted-foreground transition-colors hover:z-10 hover:text-em"
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+              </div>
             ) : (
-              <span key={tag} className="rb-chip">
+              <span key={tag} className="rb-chip ml-4 first:ml-0">
                 {tag}
               </span>
             );
