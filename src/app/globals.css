@@ -151,6 +151,19 @@ body {
 .rb-mono {
   font-family: var(--font-jbmono), ui-monospace, monospace;
 }
+
+/* "more …→" teaser links on the home hub */
+.rb-morelink {
+  font-family: var(--font-jbmono), ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--em);
+  text-decoration: none;
+  transition: opacity 0.2s var(--ease-standard);
+}
+.rb-morelink:hover {
+  opacity: 0.7;
+}
 .rb-em {
   color: var(--em);
 }

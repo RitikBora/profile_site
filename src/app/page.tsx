@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Link } from "next-view-transitions";
 import { PROJECTS } from "@/constants/projects";
 import { EMAIL, RESUME_URL } from "@/constants/site";
 import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
 import { AboutCard } from "@/components/about-card";
 import { ProjectCarousel } from "@/components/project-carousel";
-import { Timeline } from "@/components/timeline";
 import { Socials } from "@/components/socials";
 
 const HERO_TEXT = "I build scalable web applications, end‑to‑end";
@@ -74,17 +74,22 @@ export default function Home() {
         </Section>
 
         <Section id="about">
-          <SectionLabel>// about</SectionLabel>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+            <SectionLabel>// about</SectionLabel>
+            <Link href="/about" className="rb-morelink">
+              more about me →
+            </Link>
+          </div>
           <AboutCard />
         </Section>
 
         <Section id="projects">
           <ProjectCarousel projects={PROJECTS} />
-        </Section>
-
-        <Section id="career">
-          <SectionLabel>// career</SectionLabel>
-          <Timeline />
+          <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 18 }}>
+            <Link href="/projects" className="rb-morelink">
+              more projects →
+            </Link>
+          </div>
         </Section>
 
         <Section id="contact" last>
@@ -119,8 +124,8 @@ export default function Home() {
             {EMAIL} →
           </a>
           <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a
-              href={`mailto:${EMAIL}`}
+            <Link
+              href="/contact"
               className="rb-cta-primary"
               style={{
                 fontWeight: 600,
@@ -132,8 +137,8 @@ export default function Home() {
                 textDecoration: "none",
               }}
             >
-              hire me →
-            </a>
+              get in touch →
+            </Link>
             <a
               href={RESUME_URL}
               target="_blank"
