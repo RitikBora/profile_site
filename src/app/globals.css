@@ -143,10 +143,20 @@ body {
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0.01em;
 }
-.rb-root,
-.rb-root * {
-  transition: background-color 0.42s var(--ease-standard), border-color 0.42s var(--ease-standard),
-    color 0.42s var(--ease-standard), fill 0.42s var(--ease-standard);
+/* Theme toggle uses the View Transitions API for a circular clip-reveal
+   (driven from theme-toggle.tsx). Scoped to html.theme-vt so it only affects
+   theme switches — route cross-fades (next-view-transitions) keep their
+   default animation. */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html.theme-vt::view-transition-old(root) {
+  z-index: 1;
+}
+html.theme-vt::view-transition-new(root) {
+  z-index: 2;
 }
 .rb-mono {
   font-family: var(--font-jbmono), ui-monospace, monospace;

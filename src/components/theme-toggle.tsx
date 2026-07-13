@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+
+type DocumentWithViewTransitions = Document & {
+  startViewTransition?: (cb: () => void | Promise<void>) => {
+    ready: Promise<void>;
+    finished: Promise<void>;
+  };
+};
 
 /**
- * Sun/moon toggle. Reads the initial theme from the `dark` class that the
- * pre-hydration bootstrap script (in layout.tsx) applies, then keeps it in
- * sync with <html> + localStorage.
+ * Sun/moon toggle. Uses the View Transitions API for a circular clip-reveal
+ * expanding from the click point (adapted from the linkedin project). Falls
+ * back to an instant switch when unsupported or reduced-motion is on.
  */
 export function ThemeToggle() {
   const [dark, setDark] = useState(true);
@@ -14,8 +22,7 @@ export function ThemeToggle() {
     setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  const toggle = () => {
-    const next = !dark;
+  const applyTheme = (next: boolean) => {
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
     try {
@@ -23,9 +30,60 @@ export function ThemeToggle() {
     } catch (e) {}
   };
 
+  const handleToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const next = !dark;
+    const doc =
+      typeof document !== "undefined"
+        ? (document as DocumentWithViewTransitions)
+        : null;
+
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!doc?.startViewTransition || reduced) {
+      applyTheme(next);
+      return;
+    }
+
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // Scope the root-transition override to this toggle only (route cross-fades
+    // keep their default animation).
+    doc.documentElement.classList.add("theme-vt");
+    const transition = doc.startViewTransition(() => {
+      flushSync(() => applyTheme(next));
+    });
+
+    transition.ready.then(() => {
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+      doc.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 450,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
+
+    transition.finished.finally(() => {
+      doc.documentElement.classList.remove("theme-vt");
+    });
+  };
+
   return (
     <button
-      onClick={toggle}
+      onClick={handleToggle}
       aria-label="Toggle theme"
       className="flex h-[34px] w-[34px] items-center justify-center rounded-[9px] border border-border bg-transparent text-foreground transition-colors hover:bg-accent"
     >
