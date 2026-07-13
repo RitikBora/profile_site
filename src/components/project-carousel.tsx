@@ -95,7 +95,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
           </div>
         </div>
       </div>
-      <div id="rb-track" className="rb-track" ref={trackRef} style={{ marginTop: 22 }}>
+      <div id="rb-track" className="rb-track" ref={trackRef} style={{ marginTop: 8 }}>
         {projects.map((p) => (
           <ProjectCard key={p.idx} project={p} />
         ))}

@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="rb-thumb">
         <img src={project.img} alt={project.n} />
       </div>
-      <div style={{ padding: "15px 15px 16px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+      <div className="rb-pcard-body" style={{ padding: "16px 17px 18px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 9 }}>
           <span className="rb-mono rb-em" style={{ fontSize: 10.5, fontWeight: 500 }}>
             {project.idx}
