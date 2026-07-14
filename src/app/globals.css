@@ -382,28 +382,31 @@ html.theme-vt::view-transition-new(root) {
 }
 
 .rb-cta-ghost,
-.rb-cta-primary {
+.rb-cta-primary,
+.rb-cta-white {
   display: inline-flex;
   align-items: center;
   transition: transform 0.18s var(--ease-emphasized), border-color 0.25s var(--ease-standard),
-    color 0.25s var(--ease-standard), filter 0.2s var(--ease-standard), box-shadow 0.25s var(--ease-emphasized);
+    color 0.25s var(--ease-standard), filter 0.2s var(--ease-standard), background-color 0.2s var(--ease-standard);
   will-change: transform;
 }
 .rb-cta-ghost:hover {
   border-color: var(--em);
   color: var(--em);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
 }
 .rb-cta-primary:hover {
   filter: brightness(1.05);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: scale(1.02);
+}
+.rb-cta-white:hover {
+  filter: brightness(0.9);
+  transform: scale(1.02);
 }
 .rb-cta-ghost:active,
-.rb-cta-primary:active {
-  transform: translateY(0) scale(0.97);
-  box-shadow: none;
+.rb-cta-primary:active,
+.rb-cta-white:active {
+  transform: scale(0.98);
 }
 
 .rb-navbtn {

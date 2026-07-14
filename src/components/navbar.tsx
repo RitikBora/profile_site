@@ -77,13 +77,13 @@ export function Navbar() {
                 href={item.href}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="relative px-2 py-1.5"
+                className="relative px-2 py-0.5"
               >
                 {hovered === i && (
                   <motion.span
                     layoutId="rb-nav-hover"
-                    className="absolute inset-0 rounded-full bg-accent"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    className="absolute inset-0 rounded-md bg-accent"
+                    transition={{ type: "spring", stiffness: 500, damping: 34 }}
                   />
                 )}
                 <span
@@ -97,8 +97,8 @@ export function Navbar() {
                 {active && (
                   <motion.span
                     layoutId="rb-nav-active"
-                    className="absolute inset-x-3 -bottom-0.5 z-10 h-px bg-em"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    className="absolute inset-x-2 -bottom-0.5 z-10 h-px bg-em"
+                    transition={{ type: "spring", stiffness: 500, damping: 34 }}
                   />
                 )}
               </Link>

@@ -7,14 +7,24 @@ import { ProjectCarousel } from "@/components/project-carousel";
 import { Socials } from "@/components/socials";
 import { Typewriter } from "@/components/typewriter";
 
-const ghostBtn = {
+const btnBase = {
   fontWeight: 600,
   fontSize: 13,
   padding: "11px 20px",
   borderRadius: 9,
+  textDecoration: "none",
+} as const;
+
+const ghostBtn = {
+  ...btnBase,
   border: "1px solid var(--border)",
   color: "var(--foreground)",
-  textDecoration: "none",
+} as const;
+
+const greenBtn = {
+  ...btnBase,
+  background: "var(--em)",
+  color: "var(--background)",
 } as const;
 
 const specRow = {
@@ -54,7 +64,14 @@ export default function Home() {
               letterSpacing: "-.025em",
             }}
           >
-            <Typewriter lines={["I build scalable web", "applications, end‑to‑end"]} startDelay={250} speed={26} />
+            <Typewriter
+              lines={[
+                "I build scalable web",
+                [{ text: "applications, " }, { text: "end‑to‑end", className: "rb-em" }],
+              ]}
+              startDelay={250}
+              speed={26}
+            />
           </h1>
 
           <p
@@ -86,14 +103,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTAs */}
+          {/* CTAs — green (primary) + white (secondary) */}
           <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
               href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rb-cta-ghost rb-mono"
-              style={ghostBtn}
+              className="rb-cta-primary rb-mono"
+              style={greenBtn}
             >
               résumé.pdf ↓
             </a>
@@ -144,19 +161,7 @@ export default function Home() {
             {EMAIL} →
           </a>
           <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link
-              href="/contact"
-              className="rb-cta-primary"
-              style={{
-                fontWeight: 600,
-                fontSize: 13,
-                padding: "11px 20px",
-                borderRadius: 9,
-                background: "var(--primary)",
-                color: "var(--primary-foreground)",
-                textDecoration: "none",
-              }}
-            >
+            <Link href="/contact" className="rb-cta-primary rb-mono" style={greenBtn}>
               get in touch →
             </Link>
             <a
