@@ -121,8 +121,10 @@ body {
    ============================================================ */
 
 /* Boundary "ruler" hatch for the frame bands flanking the content column.
-   Matches the clone's PageContainer pattern: 315deg lines on a 10px tile,
-   pinned to the viewport (background-attachment: fixed). */
+   Matches the clone's PageContainer pattern: 315deg lines on a 10px tile.
+   NB: no background-attachment:fixed — that repaints both full-height bands
+   every scroll frame (visible jank at the heavy gallery cards). A uniform
+   repeating hatch looks identical scrolling, so we let it scroll. */
 .rb-hatch-bg {
   background-image: repeating-linear-gradient(
     315deg,
@@ -132,7 +134,6 @@ body {
     transparent 50%
   );
   background-size: 10px 10px;
-  background-attachment: fixed;
 }
 
 .rb-root {
@@ -399,15 +400,15 @@ html.theme-vt::view-transition-new(root) {
   align-items: center;
   margin-top: 44px;
 }
-/* // kind words: each testimonial fades up out of a blur once it's in frame */
-.rb-kw-item {
+/* fades a block up out of a blur once it's in frame (kind words, about lead) */
+.rb-blur-up {
   opacity: 0;
   transform: translateY(22px);
   filter: blur(10px);
   transition: opacity 0.8s var(--ease-emphasized), transform 0.8s var(--ease-emphasized),
     filter 0.8s var(--ease-emphasized);
 }
-.rb-kw-item.rb-in {
+.rb-blur-up.rb-in {
   opacity: 1;
   transform: none;
   filter: blur(0);
@@ -499,7 +500,7 @@ html.theme-vt::view-transition-new(root) {
     transition: none;
   }
   .rb-reveal,
-  .rb-kw-item {
+  .rb-blur-up {
     opacity: 1;
     transform: none;
     filter: none;

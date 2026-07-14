@@ -39,7 +39,7 @@ export default function AboutPage() {
     <div className="rb-root">
       <main>
         {/* about lead */}
-        <Section id="about" first>
+        <Section id="about" first noReveal>
           <SectionLabel>// about</SectionLabel>
           <h1
             style={{
@@ -53,7 +53,7 @@ export default function AboutPage() {
             About
           </h1>
 
-          <div className="rb-about-lead">
+          <Reveal className="rb-about-lead rb-blur-up">
             <div
               style={{
                 display: "flex",
@@ -101,13 +101,13 @@ export default function AboutPage() {
                 flexShrink: 0,
               }}
             />
-          </div>
+          </Reveal>
         </Section>
 
         {/* off the clock */}
         <Section id="offclock">
           <SectionLabel>// off the clock</SectionLabel>
-          <div style={{ marginTop: 8 }}>
+          <div style={{ marginTop: 44 }}>
             <Collage />
           </div>
         </Section>
@@ -125,7 +125,7 @@ export default function AboutPage() {
             {TESTIMONIALS.map((t, i) => (
               <Reveal
                 key={t.author}
-                className="rb-kw-item"
+                className="rb-blur-up"
                 style={{
                   padding: i === 0 ? "0 0 32px" : "32px 0 0",
                   borderTop: i === 0 ? undefined : "1px solid var(--border)",

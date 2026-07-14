@@ -12,18 +12,22 @@ export function Section({
   id,
   first,
   last,
+  noReveal,
   className,
   children,
 }: {
   id?: string;
   first?: boolean;
   last?: boolean;
+  /** Skip the section-level fade-in reveal (children can animate on their own). */
+  noReveal?: boolean;
   className?: string;
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (noReveal) return;
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
@@ -39,7 +43,7 @@ export function Section({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [noReveal]);
 
   const padding = first
     ? "clamp(60px,10vw,116px) clamp(20px,5vw,40px) clamp(50px,7vw,80px)"
@@ -51,7 +55,7 @@ export function Section({
     <section
       ref={ref}
       id={id}
-      className={`rb-reveal${className ? ` ${className}` : ""}`}
+      className={`${noReveal ? "" : "rb-reveal"}${className ? ` ${className}` : ""}`.trim()}
       style={{
         padding,
         borderTop: first ? 0 : "1px solid var(--border)",
