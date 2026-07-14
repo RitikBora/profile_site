@@ -31,8 +31,7 @@ export function AboutCard() {
           height: 210,
           borderRadius: 14,
           objectFit: "cover",
-          transform: "rotate(3deg)",
-          border: "4px solid var(--foreground)",
+          border: "1px solid var(--border)",
           boxShadow: "var(--shadow-xl)",
         }}
       />

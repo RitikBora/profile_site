@@ -337,7 +337,7 @@ html.theme-vt::view-transition-new(root) {
 /* /about page lead: prose bio + photo, top-aligned. */
 .rb-about-lead {
   display: grid;
-  grid-template-columns: 1fr 210px;
+  grid-template-columns: 1fr 220px;
   gap: 44px;
   align-items: start;
   margin-top: 30px;

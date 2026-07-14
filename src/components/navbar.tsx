@@ -57,11 +57,11 @@ export function Navbar() {
       >
         {/* wordmark */}
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-em" />
-            <span className="h-2 w-2 rounded-full bg-border" />
-            <span className="h-2 w-2 rounded-full bg-border" />
-          </span>
+          <img
+            src="/images/profile_photo.png"
+            alt="Ritik Bora"
+            className="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
+          />
           <span className="whitespace-nowrap font-mono text-[12.5px] text-foreground">
             ritik-bora.dev
           </span>
