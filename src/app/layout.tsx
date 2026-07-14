@@ -48,7 +48,7 @@ export default function RootLayout({
               w-8 (32px) hatched bands flanking a max-w-4xl (896px) content column,
               forced to the full 4xl at lg+ (lg:min-w-[56rem] = Tailwind-v3
               equivalent of the clone's v4 min-w-4xl); free to shrink below lg. */}
-          <div className="flex min-h-screen w-full justify-center">
+          <div className="rb-frame-outer flex min-h-screen w-full justify-center">
             <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
             <div className="w-full max-w-4xl bg-background lg:min-w-[56rem]">
               {children}

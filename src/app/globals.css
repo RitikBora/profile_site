@@ -62,28 +62,29 @@
 }
 
 .dark {
-  --background: oklch(0.1822 0 0);
+  /* surfaces — graphite, between the two shades */
+  --background: oklch(0.224 0.006 256);
   --foreground: oklch(0.9288 0.0126 255.5078);
-  --card: oklch(0.2046 0 0);
+  --card: oklch(0.266 0.008 256);
   --card-foreground: oklch(0.9288 0.0126 255.5078);
-  --popover: oklch(0.2603 0 0);
+  --popover: oklch(0.284 0.009 256);
   --popover-foreground: oklch(0.7348 0 0);
 
   --primary: oklch(0.4365 0.1044 156.7556);
   --primary-foreground: oklch(0.9213 0.0135 167.1556);
 
-  --secondary: oklch(0.2603 0 0);
+  --secondary: oklch(0.284 0.009 256);
   --secondary-foreground: oklch(0.9851 0 0);
-  --muted: oklch(0.2393 0 0);
+  --muted: oklch(0.246 0.007 256);
   --muted-foreground: oklch(0.7122 0 0);
-  --accent: oklch(0.3132 0 0);
+  --accent: oklch(0.309 0.01 256);
   --accent-foreground: oklch(0.9851 0 0);
 
   --destructive: oklch(0.3123 0.0852 29.7877);
   --destructive-foreground: oklch(0.9368 0.0045 34.3092);
 
-  --border: oklch(0.2809 0 0);
-  --input: oklch(0.2603 0 0);
+  --border: oklch(0.352 0.01 256);
+  --input: oklch(0.284 0.009 256);
   --ring: oklch(0.8003 0.1821 151.7110);
 
   --em: oklch(0.80 0.1821 151.71);
@@ -91,6 +92,12 @@
 
 * {
   border-color: var(--border);
+}
+
+/* pitch-black gutter outside the content column (dark only) so the
+   graphite content column reads as a distinct raised surface */
+.dark .rb-frame-outer {
+  background: #000;
 }
 
 html {
@@ -271,6 +278,7 @@ html.theme-vt::view-transition-new(root) {
   border-radius: 16px;
   background: var(--card);
   overflow: hidden;
+  box-shadow: 0 6px 22px -8px hsl(0 0% 0% / 0.5);
   transition: transform 0.4s var(--ease-emphasized), border-color 0.35s var(--ease-standard),
     box-shadow 0.4s var(--ease-emphasized);
 }
