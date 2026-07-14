@@ -44,7 +44,7 @@ export default function Home() {
             </span>
           </div>
 
-          {/* identity statement — line 1 static, line 2 typed */}
+          {/* tagline headline (typed), identity moved to the intro beneath */}
           <h1
             style={{
               margin: "20px 0 0",
@@ -54,21 +54,20 @@ export default function Home() {
               letterSpacing: "-.025em",
             }}
           >
-            <span style={{ display: "block" }}>I&apos;m Ritik —</span>
-            <Typewriter text="I build the whole thing." className="rb-em" />
+            <Typewriter lines={["I build scalable web", "applications, end‑to‑end"]} startDelay={250} speed={26} />
           </h1>
 
           <p
             style={{
               margin: "24px 0 0",
-              maxWidth: 540,
-              fontSize: 15,
+              maxWidth: 580,
+              fontSize: 16,
               lineHeight: 1.7,
               color: "var(--muted-foreground)",
             }}
           >
-            Senior developer who takes products from first commit to real users —
-            code, team, and the growth around them. Currently fine-tuning AI models.
+            Hi, I&apos;m <span className="rb-em">Ritik</span> — 5+ years shipping cybersecurity
+            products to real users. Off the clock: side projects and fine-tuning AI models.
           </p>
 
           {/* mono spec rows */}
@@ -79,7 +78,7 @@ export default function Home() {
             </div>
             <div style={{ ...specRow, borderBottom: "1px solid var(--border)" }}>
               <span className="rb-dim">exp</span>
-              <span>5+ years · MERN, Next.js, Java · cybersecurity</span>
+              <span>5+ years · MERN, Next.js, Java, AWS, CI/CD, LLMs</span>
             </div>
             <div style={specRow}>
               <span className="rb-dim">based</span>

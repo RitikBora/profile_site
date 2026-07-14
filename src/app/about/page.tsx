@@ -59,20 +59,23 @@ export default function AboutPage() {
               }}
             >
               <p style={{ margin: 0 }}>
-                I&apos;m <span className="rb-em">Ritik</span> — a senior software
-                developer at <span className="rb-em">miniOrange</span>, where I build
-                scalable, security-minded products end to end. Five-plus years in, I&apos;ve
-                owned everything from first commit to production — and increasingly the
-                go-to-market and revenue side too.
+                I&apos;m <span className="rb-em">Ritik</span>. For the past five years I&apos;ve
+                been building security products at <span className="rb-em">miniOrange</span> —
+                the identity and login systems companies quietly run on. I like owning things
+                end to end, so I&apos;ve had a hand in most of it: the first commit, the messy
+                middle, and getting it live for real users.
               </p>
               <p style={{ margin: 0 }}>
-                I&apos;ve led cross-functional teams and shipped features thousands of teams
-                rely on. My work sits where full-stack engineering meets cybersecurity.
+                Along the way I&apos;ve led small teams and shipped features a lot of companies
+                now depend on. Lately I&apos;ve been pulled past the code too — into how a
+                product actually reaches people and pays for itself. Turns out I enjoy that
+                side as much as the engineering.
               </p>
               <p style={{ margin: 0 }}>
-                Off the clock I&apos;m a relentless builder — realtime apps, Web3 experiments,
-                dev tools — mostly to learn how systems behave when I own every layer. Right
-                now: fine-tuning AI models.
+                Outside work, I&apos;m usually still building — a realtime app, a Web3
+                experiment, some dev tool nobody asked for — mostly to see how things hold up
+                when I&apos;m the one holding every piece. Right now that curiosity&apos;s
+                pointed at AI: I&apos;m deep in fine-tuning models.
               </p>
             </div>
             <img
