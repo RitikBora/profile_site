@@ -381,6 +381,52 @@ html.theme-vt::view-transition-new(root) {
   color: var(--em);
 }
 
+/* global footer social icons */
+.rb-fico {
+  color: var(--muted-foreground);
+  display: flex;
+  transition: color 0.2s var(--ease-standard);
+}
+.rb-fico:hover {
+  color: var(--em);
+}
+
+/* home contact CTA: headline + reach-out card */
+.rb-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 44px;
+  align-items: center;
+  margin-top: 44px;
+}
+/* // kind words: each testimonial fades up out of a blur once it's in frame */
+.rb-kw-item {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(10px);
+  transition: opacity 0.8s var(--ease-emphasized), transform 0.8s var(--ease-emphasized),
+    filter 0.8s var(--ease-emphasized);
+}
+.rb-kw-item.rb-in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+/* nudge the reach-out card off the right frame edge */
+.rb-contact-card {
+  transform: translateX(-28px);
+}
+@media (max-width: 620px) {
+  .rb-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .rb-contact-card {
+    transform: none;
+  }
+}
+
 .rb-cta-ghost,
 .rb-cta-primary,
 .rb-cta-white {
@@ -452,9 +498,11 @@ html.theme-vt::view-transition-new(root) {
     animation: none;
     transition: none;
   }
-  .rb-reveal {
+  .rb-reveal,
+  .rb-kw-item {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 }

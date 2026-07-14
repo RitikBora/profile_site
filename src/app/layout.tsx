@@ -4,6 +4,7 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({
             <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
             <div className="w-full max-w-4xl bg-background lg:min-w-[56rem]">
               {children}
+              <Footer />
             </div>
             <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
           </div>

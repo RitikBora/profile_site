@@ -3,3 +3,5 @@ export const RESUME_URL =
   "https://drive.google.com/file/d/1W7bFQ3YLRe98T-NZwpWSKHS3hIjlG6He/view";
 export const GITHUB_URL = "https://github.com/RitikBora";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/ritikbora";
+// TODO: replace with your real X/Twitter handle
+export const X_URL = "https://x.com/";

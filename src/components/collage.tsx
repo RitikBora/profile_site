@@ -5,31 +5,32 @@ import {
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
 
-// PLACEHOLDER photos (Unsplash) — swap for your own images in /public/images.
+// Places I've been — draggable Polaroid scatter.
 const items = [
   {
+    title: "~/lucerne.jpg",
+    image: "/images/Lucerne.jpeg",
+    className: "absolute top-4 left-[8%] rotate-[-7deg]",
+  },
+  {
+    title: "~/alps.jpg",
+    image: "/images/Alps.jpeg",
+    className: "absolute top-24 left-[25%] rotate-[6deg]",
+  },
+  {
+    title: "~/warsaw.jpg",
+    image: "/images/Warsaw.jpeg",
+    className: "absolute top-8 left-[42%] rotate-[-4deg]",
+  },
+  {
     title: "~/pune.jpg",
-    image:
-      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1200&auto=format&fit=crop",
-    className: "absolute top-6 left-[16%] rotate-[-8deg]",
+    image: "/images/Pune.jpeg",
+    className: "absolute top-28 left-[58%] rotate-[8deg]",
   },
   {
-    title: "~/desk.jpg",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-    className: "absolute top-24 left-[32%] rotate-[5deg]",
-  },
-  {
-    title: "~/travel.jpg",
-    image:
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
-    className: "absolute top-8 left-[48%] rotate-[-3deg]",
-  },
-  {
-    title: "~/build.jpg",
-    image:
-      "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?q=80&w=1200&auto=format&fit=crop",
-    className: "absolute top-28 left-[60%] rotate-[9deg]",
+    title: "~/nashik.jpg",
+    image: "/images/Nashik.jpeg",
+    className: "absolute top-10 left-[73%] rotate-[-9deg]",
   },
 ];
 
