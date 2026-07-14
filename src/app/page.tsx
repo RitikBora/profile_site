@@ -5,6 +5,7 @@ import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { Socials } from "@/components/socials";
+import { Typewriter } from "@/components/typewriter";
 
 const ghostBtn = {
   fontWeight: 600,
@@ -30,11 +31,20 @@ export default function Home() {
           each Section so the divider lines run full-bleed to the frame. */}
       <main>
         <Section id="top" first>
-          <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
-            $ whoami
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+            <span className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
+              $ whoami
+            </span>
+            <span className="rb-mono" style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 11, color: "var(--muted-foreground)" }}>
+              <span className="rb-stat">
+                <i></i>
+                <b></b>
+              </span>
+              available for work
+            </span>
           </div>
 
-          {/* identity statement — two fixed lines, second line accented */}
+          {/* identity statement — line 1 static, line 2 typed */}
           <h1
             style={{
               margin: "20px 0 0",
@@ -45,9 +55,7 @@ export default function Home() {
             }}
           >
             <span style={{ display: "block" }}>I&apos;m Ritik —</span>
-            <span className="rb-em" style={{ display: "block" }}>
-              I build the whole thing.
-            </span>
+            <Typewriter text="I build the whole thing." className="rb-em" />
           </h1>
 
           <p
@@ -93,18 +101,6 @@ export default function Home() {
             <Link href="/about" className="rb-cta-ghost rb-mono" style={ghostBtn}>
               more about me →
             </Link>
-          </div>
-
-          {/* availability */}
-          <div
-            className="rb-mono"
-            style={{ marginTop: 22, display: "flex", alignItems: "center", gap: 9, fontSize: 11, color: "var(--muted-foreground)" }}
-          >
-            <span className="rb-stat">
-              <i></i>
-              <b></b>
-            </span>
-            available for work
           </div>
         </Section>
 

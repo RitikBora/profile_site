@@ -53,14 +53,14 @@ export function Navbar() {
           transition:
             "background-color 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s cubic-bezier(0.22,1,0.36,1)",
         }}
-        className="flex items-center gap-3 rounded-full border px-4 py-2 backdrop-blur-md"
+        className="flex items-center gap-3 rounded-full border py-2 pl-2 pr-2.5 backdrop-blur-md"
       >
         {/* wordmark */}
         <Link href="/" className="flex items-center gap-2.5">
           <img
             src="/images/profile_photo.png"
             alt="Ritik Bora"
-            className="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
+            className="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
           />
           <span className="whitespace-nowrap font-mono text-[12.5px] text-foreground">
             ritik-bora.dev
@@ -77,7 +77,7 @@ export function Navbar() {
                 href={item.href}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="relative px-3 py-1.5"
+                className="relative px-2 py-1.5"
               >
                 {hovered === i && (
                   <motion.span
@@ -105,10 +105,7 @@ export function Navbar() {
             );
           })}
         </div>
-
-        <div className="ml-1">
           <ThemeToggle />
-        </div>
       </motion.nav>
     </div>
   );
