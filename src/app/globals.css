@@ -405,8 +405,8 @@ html.theme-vt::view-transition-new(root) {
   opacity: 0;
   transform: translateY(22px);
   filter: blur(10px);
-  transition: opacity 0.8s var(--ease-emphasized), transform 0.8s var(--ease-emphasized),
-    filter 0.8s var(--ease-emphasized);
+  transition: opacity 0.55s var(--ease-emphasized), transform 0.55s var(--ease-emphasized),
+    filter 0.55s var(--ease-emphasized);
 }
 .rb-blur-up.rb-in {
   opacity: 1;

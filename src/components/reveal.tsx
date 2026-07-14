@@ -11,11 +11,14 @@ export function Reveal({
   className,
   style,
   amount = 0.35,
+  rootMargin = "0px 0px -12% 0px",
   children,
 }: {
   className?: string;
   style?: React.CSSProperties;
   amount?: number;
+  /** Extend/shrink the trigger zone; a positive bottom value fires earlier. */
+  rootMargin?: string;
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,11 +34,11 @@ export function Reveal({
           io.unobserve(el);
         }
       },
-      { threshold: amount, rootMargin: "0px 0px -12% 0px" }
+      { threshold: amount, rootMargin }
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [amount]);
+  }, [amount, rootMargin]);
 
   return (
     <div ref={ref} className={`${className ?? ""}${shown ? " rb-in" : ""}`} style={style}>

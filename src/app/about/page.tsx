@@ -105,11 +105,16 @@ export default function AboutPage() {
         </Section>
 
         {/* off the clock */}
-        <Section id="offclock">
+        <Section id="offclock" noReveal>
           <SectionLabel>// off the clock</SectionLabel>
-          <div style={{ marginTop: 44 }}>
+          <Reveal
+            className="rb-blur-up"
+            style={{ marginTop: 44 }}
+            amount={0.1}
+            rootMargin="0px 0px -8% 0px"
+          >
             <Collage />
-          </div>
+          </Reveal>
         </Section>
 
         {/* career */}
