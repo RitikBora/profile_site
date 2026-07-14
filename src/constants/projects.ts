@@ -5,6 +5,8 @@ export type Project = {
   tech: string[];
   img: string;
   url: string;
+  /** object-position for the thumbnail crop (default "center top"). */
+  pos?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -15,6 +17,7 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js", "Web3", "shadcn"],
     img: "/images/xchange.png",
     url: "https://xchange.ritikboradev.com/",
+    pos: "left top",
   },
   {
     idx: "02",
