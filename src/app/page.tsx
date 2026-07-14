@@ -1,53 +1,60 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { Link } from "next-view-transitions";
 import { PROJECTS } from "@/constants/projects";
 import { EMAIL, RESUME_URL } from "@/constants/site";
 import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
-import { AboutCard } from "@/components/about-card";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { Socials } from "@/components/socials";
+import { Typewriter } from "@/components/typewriter";
 
-const HERO_LINE1 = "I build scalable web";
-const HERO_LINE2 = "applications, end‑to‑end";
-const HERO_LEN = HERO_LINE1.length + HERO_LINE2.length;
+const btnBase = {
+  fontWeight: 600,
+  fontSize: 13,
+  padding: "11px 20px",
+  borderRadius: 9,
+  textDecoration: "none",
+} as const;
+
+const ghostBtn = {
+  ...btnBase,
+  border: "1px solid var(--border)",
+  color: "var(--foreground)",
+} as const;
+
+const greenBtn = {
+  ...btnBase,
+  background: "var(--em)",
+  color: "var(--background)",
+} as const;
+
+const specRow = {
+  display: "grid",
+  gridTemplateColumns: "104px 1fr",
+  gap: 14,
+  padding: "14px 0",
+} as const;
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-
-  // Typewriter hero — two fixed lines so the wrap point never reflows.
-  useEffect(() => {
-    let i = 0;
-    let stepTimer: ReturnType<typeof setTimeout>;
-    const tick = () => {
-      setCount(i);
-      i++;
-      if (i <= HERO_LEN) stepTimer = setTimeout(tick, 30);
-    };
-    const startTimer = setTimeout(tick, 360);
-    return () => {
-      clearTimeout(startTimer);
-      clearTimeout(stepTimer);
-    };
-  }, []);
-
-  const shown1 = HERO_LINE1.slice(0, Math.min(count, HERO_LINE1.length));
-  const shown2 = count > HERO_LINE1.length ? HERO_LINE2.slice(0, count - HERO_LINE1.length) : "";
-  const onLine2 = count >= HERO_LINE1.length;
-
   return (
     <div className="rb-root">
       {/* main fills the full 896px content column; horizontal padding lives on
           each Section so the divider lines run full-bleed to the frame. */}
       <main>
         <Section id="top" first>
-          <div className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
-            $ whoami
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+            <span className="rb-mono" style={{ fontSize: 12, letterSpacing: ".18em", color: "var(--em)" }}>
+              $ whoami
+            </span>
+            <span className="rb-mono" style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 11, color: "var(--muted-foreground)" }}>
+              <span className="rb-stat">
+                <i></i>
+                <b></b>
+              </span>
+              available for work
+            </span>
           </div>
-          {/* Two fixed lines: each keeps its untyped remainder in-DOM (invisible)
-              so line width + total height stay constant — no reflow as it types. */}
+
+          {/* tagline headline (typed), identity moved to the intro beneath */}
           <h1
             style={{
               margin: "20px 0 0",
@@ -57,45 +64,60 @@ export default function Home() {
               letterSpacing: "-.025em",
             }}
           >
-            <span style={{ display: "block", whiteSpace: "nowrap" }}>
-              {shown1}
-              {!onLine2 && <span className="rb-caret" />}
-              <span aria-hidden style={{ opacity: 0 }}>{HERO_LINE1.slice(shown1.length)}</span>
-            </span>
-            <span style={{ display: "block", whiteSpace: "nowrap" }}>
-              {shown2}
-              {onLine2 && <span className="rb-caret" />}
-              <span aria-hidden style={{ opacity: 0 }}>{HERO_LINE2.slice(shown2.length)}</span>
-            </span>
+            <Typewriter
+              lines={[
+                "I build scalable web",
+                [{ text: "applications, " }, { text: "end‑to‑end", className: "rb-em" }],
+              ]}
+              startDelay={250}
+              speed={26}
+            />
           </h1>
-          <div
-            className="rb-mono"
+
+          <p
             style={{
-              marginTop: 26,
-              fontSize: 12.5,
+              margin: "24px 0 0",
+              maxWidth: 580,
+              fontSize: 16,
+              lineHeight: 1.7,
               color: "var(--muted-foreground)",
-              display: "flex",
-              flexDirection: "column",
-              gap: 7,
             }}
           >
-            <span>
-              <span className="rb-dim">role</span>&nbsp;&nbsp;senior software developer, miniOrange
-            </span>
-            <span>
-              <span className="rb-dim">exp&nbsp;</span>&nbsp;&nbsp;5+ years · MERN, Next.js, Java, AWS
-            </span>
-          </div>
-        </Section>
+            Hi, I&apos;m <span className="rb-em">Ritik</span> — 5+ years shipping cybersecurity
+            products to real users. Off the clock: side projects and fine-tuning AI models.
+          </p>
 
-        <Section id="about">
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-            <SectionLabel>// about</SectionLabel>
-            <Link href="/about" className="rb-morelink">
+          {/* mono spec rows */}
+          <div className="rb-mono" style={{ marginTop: 34, fontSize: 14 }}>
+            <div style={{ ...specRow, borderBottom: "1px solid var(--border)" }}>
+              <span className="rb-dim">role</span>
+              <span>senior software developer, miniOrange</span>
+            </div>
+            <div style={{ ...specRow, borderBottom: "1px solid var(--border)" }}>
+              <span className="rb-dim">exp</span>
+              <span>5+ years · MERN, Next.js, Java, AWS, CI/CD, LLMs</span>
+            </div>
+            <div style={specRow}>
+              <span className="rb-dim">based</span>
+              <span>Pune, India</span>
+            </div>
+          </div>
+
+          {/* CTAs — green (primary) + white (secondary) */}
+          <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rb-cta-primary rb-mono"
+              style={greenBtn}
+            >
+              résumé.pdf ↓
+            </a>
+            <Link href="/about" className="rb-cta-ghost rb-mono" style={ghostBtn}>
               more about me →
             </Link>
           </div>
-          <AboutCard />
         </Section>
 
         <Section id="projects">
@@ -139,19 +161,7 @@ export default function Home() {
             {EMAIL} →
           </a>
           <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link
-              href="/contact"
-              className="rb-cta-primary"
-              style={{
-                fontWeight: 600,
-                fontSize: 13,
-                padding: "11px 20px",
-                borderRadius: 9,
-                background: "var(--primary)",
-                color: "var(--primary-foreground)",
-                textDecoration: "none",
-              }}
-            >
+            <Link href="/contact" className="rb-cta-primary rb-mono" style={greenBtn}>
               get in touch →
             </Link>
             <a
@@ -159,15 +169,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="rb-cta-ghost"
-              style={{
-                fontWeight: 600,
-                fontSize: 13,
-                padding: "11px 20px",
-                borderRadius: 9,
-                border: "1px solid var(--border)",
-                color: "var(--foreground)",
-                textDecoration: "none",
-              }}
+              style={ghostBtn}
             >
               résumé.pdf ↓
             </a>

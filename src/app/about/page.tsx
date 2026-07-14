@@ -7,20 +7,31 @@ import { Collage } from "@/components/collage";
 export const metadata: Metadata = {
   title: "About | Ritik Bora",
   description:
-    "Ritik Bora — senior software engineer at miniOrange building scalable, security-minded web applications end-to-end. MERN, Next.js, Java.",
+    "Ritik Bora — senior software developer at miniOrange building products end to end: engineering, teams, and the growth around them.",
 };
 
-// NOTE: draft bio assembled from known facts — rewrite in your own voice before launch.
-const BIO: string[] = [
-  "I'm a senior software engineer at miniOrange, where I build scalable, security-minded web applications end to end. Over the last 3+ years I've worked across the whole stack — MERN, Next.js, and Java — taking products from first commit to production.",
-  "My work sits at the intersection of full-stack engineering and cybersecurity: shipping features that thousands of teams rely on, while keeping authentication, authorization, and data protection front and center.",
-  "Outside of the day job I like building things end to end — realtime apps, Web3 experiments, and developer tools — mostly to learn how systems behave when you own every layer. I'm based in Pune, India.",
+const STACK = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "MongoDB",
+  "Java",
+  "AWS",
+  "Tailwind",
+  "WebRTC",
+  "Web3",
 ];
+
+const chipBase = { fontSize: 11, padding: "5px 12px" } as const;
+const chipAccent = { ...chipBase, borderColor: "var(--em)", color: "var(--em)" } as const;
 
 export default function AboutPage() {
   return (
     <div className="rb-root">
       <main>
+        {/* about lead */}
         <Section id="about" first>
           <SectionLabel>// about</SectionLabel>
           <h1
@@ -47,25 +58,38 @@ export default function AboutPage() {
                 color: "var(--foreground)",
               }}
             >
-              {BIO.map((para, i) => (
-                <p key={i} style={{ margin: 0 }}>
-                  {para}
-                </p>
-              ))}
+              <p style={{ margin: 0 }}>
+                I&apos;m <span className="rb-em">Ritik</span>. For the past five years I&apos;ve
+                been building security products at <span className="rb-em">miniOrange</span> —
+                the identity and login systems companies quietly run on. I like owning things
+                end to end, so I&apos;ve had a hand in most of it: the first commit, the messy
+                middle, and getting it live for real users.
+              </p>
+              <p style={{ margin: 0 }}>
+                Along the way I&apos;ve led small teams and shipped features a lot of companies
+                now depend on. Lately I&apos;ve been pulled past the code too — into how a
+                product actually reaches people and pays for itself. Turns out I enjoy that
+                side as much as the engineering.
+              </p>
+              <p style={{ margin: 0 }}>
+                Outside work, I&apos;m usually still building — a realtime app, a Web3
+                experiment, some dev tool nobody asked for — mostly to see how things hold up
+                when I&apos;m the one holding every piece. Right now that curiosity&apos;s
+                pointed at AI: I&apos;m deep in fine-tuning models.
+              </p>
             </div>
             <img
               className="rb-photo"
               src="/images/about.png"
               alt="Ritik Bora"
-              width={210}
-              height={210}
+              width={220}
+              height={270}
               style={{
-                width: 210,
-                height: 210,
+                width: 220,
+                height: 270,
                 borderRadius: 14,
                 objectFit: "cover",
-                transform: "rotate(3deg)",
-                border: "4px solid var(--foreground)",
+                border: "1px solid var(--border)",
                 boxShadow: "var(--shadow-xl)",
                 flexShrink: 0,
               }}
@@ -73,6 +97,7 @@ export default function AboutPage() {
           </div>
         </Section>
 
+        {/* off the clock */}
         <Section id="offclock">
           <SectionLabel>// off the clock</SectionLabel>
           <div style={{ marginTop: 8 }}>
@@ -80,6 +105,22 @@ export default function AboutPage() {
           </div>
         </Section>
 
+        {/* stack */}
+        <Section id="stack">
+          <SectionLabel>// stack</SectionLabel>
+          <div style={{ marginTop: 22, display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {STACK.map((t) => {
+              const accent = t === "React" || t === "Next.js";
+              return (
+                <span key={t} className="rb-chip" style={accent ? chipAccent : chipBase}>
+                  {t}
+                </span>
+              );
+            })}
+          </div>
+        </Section>
+
+        {/* career */}
         <Section id="career" last>
           <SectionLabel>// career</SectionLabel>
           <Timeline />
