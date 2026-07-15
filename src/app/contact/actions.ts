@@ -29,9 +29,14 @@ export async function sendContact(data: {
 
   try {
     const resend = new Resend(apiKey);
-    // CONTACT_FROM should be a verified-domain sender (e.g. contact@ritikboradev.com);
+    // CONTACT_FROM should be a verified-domain sender (e.g. contact@ritikbora.dev);
     // defaults to Resend's shared sender so it works before domain verification.
-    const from = process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>";
+    const baseFrom = process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>";
+    // Keep the verified address, but show the visitor's name as the sender so the
+    // inbox list reads "Jane Doe" instead of the domain owner. Reply-to still points
+    // at the visitor's real email.
+    const fromAddr = baseFrom.match(/<(.+)>/)?.[1] ?? baseFrom;
+    const from = `${name} <${fromAddr}>`;
     const { error } = await resend.emails.send({
       from,
       to: EMAIL,

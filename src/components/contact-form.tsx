@@ -60,7 +60,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={sending}
-          className="rb-cta-primary rb-mono mt-1 rounded-lg py-3 text-center text-[13px] font-semibold disabled:cursor-not-allowed disabled:opacity-60"
+          className="rb-cta-primary rb-mono mt-1 justify-center self-start rounded-lg px-7 py-3 text-center text-[13px] font-semibold disabled:cursor-not-allowed disabled:opacity-60"
           style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
         >
           {sending ? "sending…" : "send message →"}
