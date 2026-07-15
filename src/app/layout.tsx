@@ -23,10 +23,17 @@ export const metadata: Metadata = {
     "Ritik Bora — Senior Software Developer building scalable web applications end-to-end. MERN, Next.js, Java.",
 };
 
+// Theme resolution (runs before paint, no flash):
+//   1. explicit stored choice ('rb-theme') wins
+//   2. else follow the OS setting (prefers-color-scheme: dark)
+//   3. else (light or undetectable) fall back to light
 const themeBootstrap = `
 try {
   var t = localStorage.getItem('rb-theme');
-  if (t ? t === 'dark' : true) document.documentElement.classList.add('dark');
+  var dark = t
+    ? t === 'dark'
+    : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (dark) document.documentElement.classList.add('dark');
 } catch (e) {}
 `;
 
