@@ -76,7 +76,7 @@
   --secondary: oklch(0.284 0.009 256);
   --secondary-foreground: oklch(0.9851 0 0);
   --muted: oklch(0.246 0.007 256);
-  --muted-foreground: oklch(0.7122 0 0);
+  --muted-foreground: oklch(0.5822 0 0);
   --accent: oklch(0.309 0.01 256);
   --accent-foreground: oklch(0.9851 0 0);
 
@@ -186,7 +186,7 @@ html.theme-vt::view-transition-new(root) {
   color: var(--em);
 }
 .rb-dim {
-  color: color-mix(in oklch, var(--foreground) 42%, var(--background));
+  color: var(--muted-foreground);
 }
 .rb-root a {
   color: var(--em);
