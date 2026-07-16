@@ -15,7 +15,7 @@ export function Timeline({ items = TIMELINE }: { items?: TimelineItem[] }) {
 
   // Running index so every line across every entry cascades in sequence.
   let step = 0;
-  const nextDelay = () => step++ * 0.09;
+  const nextDelay = () => step++ * 0.05;
 
   const reveal = (delay: number) => ({
     initial: { opacity: 0, y: -6, filter: "blur(8px)" },
@@ -24,7 +24,7 @@ export function Timeline({ items = TIMELINE }: { items?: TimelineItem[] }) {
       y: isInView ? 0 : -6,
       filter: isInView ? "blur(0px)" : "blur(8px)",
     },
-    transition: { duration: 0.35, delay, ease: "easeInOut" as const },
+    transition: { duration: 0.28, delay, ease: "easeInOut" as const },
   });
 
   return (

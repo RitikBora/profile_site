@@ -3,6 +3,7 @@ import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
 import { Timeline } from "@/components/timeline";
 import { Collage } from "@/components/collage";
+import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "About | Ritik Bora",
@@ -10,29 +11,35 @@ export const metadata: Metadata = {
     "Ritik Bora — senior software developer at miniOrange building products end to end: engineering, teams, and the growth around them.",
 };
 
-const STACK = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "Java",
-  "AWS",
-  "Tailwind",
-  "WebRTC",
-  "Web3",
+const TESTIMONIALS = [
+  {
+    quote: (
+      <>
+        &ldquo;Ritik&apos;s technical prowess as a software developer is{" "}
+        <span className="rb-em">truly exceptional</span>. His ability to dissect complex
+        problems and devise innovative solutions is unparalleled. He not only led by example
+        but mentored junior team members, fostering a collaborative and productive team.&rdquo;
+      </>
+    ),
+    author: "kuldeep patil · engineering lead, miniorange",
+  },
+  {
+    quote: (
+      <>
+        &ldquo;Intuitive and powerful. Working with Ritik has been{" "}
+        <span className="rb-em">a game-changer for our team</span>.&rdquo;
+      </>
+    ),
+    author: "aditya reddy · team lead (atlassian), miniorange",
+  },
 ];
-
-const chipBase = { fontSize: 11, padding: "5px 12px" } as const;
-const chipAccent = { ...chipBase, borderColor: "var(--em)", color: "var(--em)" } as const;
 
 export default function AboutPage() {
   return (
     <div className="rb-root">
       <main>
         {/* about lead */}
-        <Section id="about" first>
+        <Section id="about" first noReveal>
           <SectionLabel>// about</SectionLabel>
           <h1
             style={{
@@ -46,7 +53,7 @@ export default function AboutPage() {
             About
           </h1>
 
-          <div className="rb-about-lead">
+          <Reveal className="rb-about-lead rb-blur-up">
             <div
               style={{
                 display: "flex",
@@ -80,7 +87,7 @@ export default function AboutPage() {
             </div>
             <img
               className="rb-photo"
-              src="/images/about.png"
+              src="/images/Goa.png"
               alt="Ritik Bora"
               width={220}
               height={270}
@@ -94,36 +101,62 @@ export default function AboutPage() {
                 flexShrink: 0,
               }}
             />
-          </div>
+          </Reveal>
         </Section>
 
         {/* off the clock */}
-        <Section id="offclock">
+        <Section id="offclock" noReveal>
           <SectionLabel>// off the clock</SectionLabel>
-          <div style={{ marginTop: 8 }}>
+          <Reveal
+            className="rb-blur-up"
+            style={{ marginTop: 44 }}
+            amount={0.1}
+            rootMargin="0px 0px -8% 0px"
+          >
             <Collage />
-          </div>
-        </Section>
-
-        {/* stack */}
-        <Section id="stack">
-          <SectionLabel>// stack</SectionLabel>
-          <div style={{ marginTop: 22, display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {STACK.map((t) => {
-              const accent = t === "React" || t === "Next.js";
-              return (
-                <span key={t} className="rb-chip" style={accent ? chipAccent : chipBase}>
-                  {t}
-                </span>
-              );
-            })}
-          </div>
+          </Reveal>
         </Section>
 
         {/* career */}
-        <Section id="career" last>
+        <Section id="career">
           <SectionLabel>// career</SectionLabel>
           <Timeline />
+        </Section>
+
+        {/* kind words */}
+        <Section id="kind-words" last>
+          <SectionLabel>// kind words</SectionLabel>
+          <div style={{ marginTop: 30, display: "flex", flexDirection: "column" }}>
+            {TESTIMONIALS.map((t, i) => (
+              <Reveal
+                key={t.author}
+                className="rb-blur-up"
+                style={{
+                  padding: i === 0 ? "0 0 32px" : "32px 0 0",
+                  borderTop: i === 0 ? undefined : "1px solid var(--border)",
+                }}
+              >
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "clamp(16px,1.9vw,20px)",
+                    lineHeight: 1.55,
+                    fontWeight: 500,
+                    letterSpacing: "-.01em",
+                    maxWidth: 640,
+                  }}
+                >
+                  {t.quote}
+                </p>
+                <div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 12 }}>
+                  <span style={{ width: 26, height: 1, background: "var(--em)" }} />
+                  <span className="rb-mono" style={{ fontSize: 11.5, color: "var(--muted-foreground)" }}>
+                    {t.author}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </Section>
       </main>
     </div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -22,10 +23,17 @@ export const metadata: Metadata = {
     "Ritik Bora — Senior Software Developer building scalable web applications end-to-end. MERN, Next.js, Java.",
 };
 
+// Theme resolution (runs before paint, no flash):
+//   1. explicit stored choice ('rb-theme') wins
+//   2. else follow the OS setting (prefers-color-scheme: dark)
+//   3. else (light or undetectable) fall back to light
 const themeBootstrap = `
 try {
   var t = localStorage.getItem('rb-theme');
-  if (t ? t === 'dark' : true) document.documentElement.classList.add('dark');
+  var dark = t
+    ? t === 'dark'
+    : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (dark) document.documentElement.classList.add('dark');
 } catch (e) {}
 `;
 
@@ -47,10 +55,11 @@ export default function RootLayout({
               w-8 (32px) hatched bands flanking a max-w-4xl (896px) content column,
               forced to the full 4xl at lg+ (lg:min-w-[56rem] = Tailwind-v3
               equivalent of the clone's v4 min-w-4xl); free to shrink below lg. */}
-          <div className="flex min-h-screen w-full justify-center">
+          <div className="rb-frame-outer flex min-h-screen w-full justify-center">
             <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
             <div className="w-full max-w-4xl bg-background lg:min-w-[56rem]">
               {children}
+              <Footer />
             </div>
             <div aria-hidden className="rb-hatch-bg w-8 shrink-0 border-x border-border" />
           </div>

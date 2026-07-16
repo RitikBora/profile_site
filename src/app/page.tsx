@@ -4,7 +4,6 @@ import { EMAIL, RESUME_URL } from "@/constants/site";
 import { Section } from "@/components/section";
 import { SectionLabel } from "@/components/section-label";
 import { ProjectCarousel } from "@/components/project-carousel";
-import { Socials } from "@/components/socials";
 import { Typewriter } from "@/components/typewriter";
 
 const btnBase = {
@@ -140,41 +139,49 @@ export default function Home() {
               available for work
             </div>
           </div>
-          <h2 style={{ margin: "22px 0 0", fontWeight: 700, fontSize: "clamp(30px,4.6vw,46px)", lineHeight: 1.1, letterSpacing: "-.02em" }}>
-            Let&apos;s build something
-            <br />
-            <span className="rb-em">worth shipping.</span>
-          </h2>
-          <a
-            className="rb-mono"
-            href={`mailto:${EMAIL}`}
-            style={{
-              display: "inline-block",
-              marginTop: 26,
-              fontSize: "clamp(15px,2vw,19px)",
-              color: "var(--foreground)",
-              textDecoration: "none",
-              borderBottom: "1px solid var(--em)",
-              paddingBottom: 4,
-            }}
-          >
-            {EMAIL} →
-          </a>
-          <div style={{ marginTop: 28, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/contact" className="rb-cta-primary rb-mono" style={greenBtn}>
-              get in touch →
-            </Link>
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rb-cta-ghost"
-              style={ghostBtn}
+
+          {/* split: headline on the left, reach-out card on the right */}
+          <div className="rb-contact-grid">
+            <div>
+              <h2 style={{ margin: 0, fontWeight: 700, fontSize: "clamp(28px,3.4vw,42px)", lineHeight: 1.1, letterSpacing: "-.02em" }}>
+                Let&apos;s build something <span className="rb-em">worth shipping.</span>
+              </h2>
+              <p style={{ margin: "20px 0 0", maxWidth: 400, fontSize: 15, lineHeight: 1.7, color: "var(--muted-foreground)" }}>
+                Freelance, full-time, or just a good idea — tell me what you&apos;re building and I&apos;ll get back fast.
+              </p>
+            </div>
+            <div
+              className="rb-contact-card"
+              style={{
+                border: "1px solid var(--border)",
+                borderRadius: 16,
+                background: "var(--card)",
+                padding: 24,
+                boxShadow: "var(--shadow-sm)",
+              }}
             >
-              résumé.pdf ↓
-            </a>
+              <div className="rb-mono rb-dim" style={{ fontSize: 10.5, letterSpacing: ".14em", textTransform: "uppercase" }}>
+                email
+              </div>
+              <a
+                className="rb-mono rb-foot"
+                href={`mailto:${EMAIL}`}
+                style={{ display: "block", marginTop: 7, fontSize: 14, color: "var(--foreground)", textDecoration: "none", wordBreak: "break-all" }}
+              >
+                {EMAIL}
+              </a>
+              <Link
+                href="/contact"
+                className="rb-cta-primary rb-mono"
+                style={{ ...greenBtn, marginTop: 18, justifyContent: "center", gap: 8, width: "100%", padding: "12px 18px" }}
+              >
+                get in touch →
+              </Link>
+              <div className="rb-mono rb-dim" style={{ marginTop: 14, fontSize: 10.5, textAlign: "center" }}>
+                typically replies within 24h
+              </div>
+            </div>
           </div>
-          <Socials />
         </Section>
       </main>
     </div>
