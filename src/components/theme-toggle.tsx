@@ -16,6 +16,11 @@ type DocumentWithViewTransitions = Document & {
  * back to an instant switch when unsupported or reduced-motion is on.
  */
 export function ThemeToggle() {
+  // Defaults to true (dark) to match SSR, which has no access to the
+  // localStorage/OS preference the inline bootstrap script (layout.tsx)
+  // applies before hydration. Corrected to the real value post-mount below —
+  // initializing from document.documentElement here instead would mismatch
+  // the server-rendered HTML and force React to scrap it on hydration.
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
